@@ -1,0 +1,5 @@
+# Cloudflare API Token
+# Get it from: https://dash.cloudflare.com/profile/api-tokens
+# Token type: Cloudflare Pages (Edit)
+# Required scopes: Account - Cloudflare Pages - Edit
+CF_PAGES_API_TOKEN=your_token_here

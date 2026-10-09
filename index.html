@@ -1,0 +1,5113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jog.DEV — Web Development & Digital Solutions</title>
+
+    <link rel="canonical" href="https://www.jasaweb-jogdev.my.id/">
+    <meta http-equiv="refresh" content="0;url=https://www.jasaweb-jogdev.my.id/">
+
+    <!-- Canonical Redirect -->
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- AOS Animation -->
+    <link
+        href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+        rel="stylesheet"
+    >
+
+    <!-- Three.js Q-ris -->
+    <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+
+    <!-- Custom CSS -->
+    <style>
+body {
+    background: #0b0f1a;
+    color: #e2e8f0;
+    font-family: 'Inter', system-ui, -apple-system,
+        BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    border-color: rgba(20, 241, 217, 0.25);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(20, 241, 217, 0.06);
+}
+
+.mobile-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+    transition: max-height 0.35s ease,
+                opacity 0.25s ease,
+                transform 0.3s ease;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-8px);
+    -webkit-overflow-scrolling: touch;
+}
+
+.mobile-nav.open {
+    max-height: calc(100dvh - 4rem);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#menu-toggle {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    #menu-toggle {
+        display: none;
+    }
+}
+
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.logo-gradient {
+    background: linear-gradient(
+        135deg,
+        #14f1d9 0%,
+        #0ea5e9 50%,
+        #14f1d9 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.btn-lift {
+    transition: all 0.25s ease;
+}
+
+.btn-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(20, 241, 217, 0.18);
+}
+
+:root {
+    --accent: #14f1d9;
+    --accent-dim: #0dc2af;
+    --glass: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(255, 255, 255, 0.06);
+    --text-secondary: #94a3b8;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.hero-title-shadow {
+    text-shadow:
+        0 3px 6px rgba(0, 0, 0, 0.95),
+        0 8px 20px rgba(0, 0, 0, 0.85),
+        0 16px 40px rgba(0, 0, 0, 0.95),
+        0 25px 60px rgba(0, 0, 0, 0.90),
+        0 0 40px rgba(20, 241, 217, 0.35);
+}
+
+.hero-sub-shadow {
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.95),
+        0 5px 14px rgba(0, 0, 0, 0.90),
+        0 10px 28px rgba(0, 0, 0, 0.95),
+        0 18px 45px rgba(0, 0, 0, 0.85);
+}
+
+.test-navbar {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+.glow-teal {
+    text-shadow:
+        0 0 40px rgba(20, 241, 217, 0.25),
+        0 0 80px rgba(20, 241, 217, 0.10);
+}
+
+.glass-reflect {
+    display: inline-block;
+    position: relative;
+    max-width: 100%;
+    line-height: 0;
+    border-radius: 1rem;
+    overflow: hidden;
+    contain: paint;
+    isolation: isolate;
+}
+
+.glass-reflect img {
+    display: block;
+}
+
+.glass-reflect::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 72%;
+    height: 100%;
+
+    background: linear-gradient(
+        115deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.15) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+
+    transform: translateX(-150%) skewX(-22deg);
+    filter: blur(10px);
+    pointer-events: none;
+    opacity: 1;
+    z-index: 2;
+
+    animation: glassSweep 2.5s ease-in-out infinite;
+}
+
+@keyframes glassSweep {
+    0% {
+        transform: translateX(-150%) skewX(-22deg);
+        opacity: 1;
+    }
+
+    82% {
+        transform: translateX(480%) skewX(-22deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(480%) skewX(-22deg);
+        opacity: 0;
+    }
+}
+
+.skill-bar {
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+}
+
+.skill-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(
+        90deg,
+        #14f1d9,
+        #0ea5e9
+    );
+    width: 0;
+    transition: width 1.2s ease;
+}
+
+.glow-teal {
+    text-shadow:
+        0 0 40px rgba(20, 241, 217, 0.25),
+        0 0 80px rgba(20, 241, 217, 0.10);
+}
+
+/* Pricing card highlight */
+.pricing-featured {
+    border-color: rgba(20, 241, 217, 0.3);
+    background: rgba(20, 241, 217, 0.03);
+}
+
+/* ===== 3D Tilt card PAKET (kemiringan lebih kecil) ===== */
+
+[class~="p-7"].glass-card.rounded-2xl.text-center.fade-in,
+[class~="p-7"].glass-card.rounded-2xl.text-center[data-aos] {
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+[class~="p-7"].glass-card.rounded-2xl.text-center.fade-in::before,
+[class~="p-7"].glass-card.rounded-2xl.text-center[data-aos]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 2;
+
+    background: radial-gradient(
+        circle at var(--mx, 50%) var(--my, 50%),
+        rgba(20, 241, 217, 0.08) 0%,
+        rgba(20, 241, 217, 0.025) 38%,
+        rgba(255, 255, 255, 0) 68%
+    );
+
+    mix-blend-mode: screen;
+    opacity: var(--glow, 0);
+    transition: opacity 0.35s ease;
+}
+
+/* ===== Modal Pembelian Paket ===== */
+
+.order-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(3, 6, 12, 0.72);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s;
+}
+
+.order-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.order-modal {
+    position: relative;
+    width: 100%;
+    max-width: 620px;
+    max-height: 92vh;
+    overflow-y: auto;
+    background: #101624;
+    border: 1px solid rgba(20, 241, 217, 0.2);
+    border-radius: 1.25rem;
+    padding: 32px 30px 28px;
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.6),
+        0 0 50px rgba(20,241,217,0.06);
+    transform: translateY(30px) scale(0.95);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.order-overlay.open .order-modal {
+    transform: translateY(0) scale(1);
+}
+
+.order-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #94a3b8;
+    font-size: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.order-close:hover {
+    background: var(--accent);
+    color: #0b0f1a;
+    transform: rotate(90deg);
+}
+
+.order-badge {
+    display: inline-block;
+    padding: 5px 16px;
+    border-radius: 999px;
+    background: rgba(20,241,217,0.12);
+    border: 1px solid rgba(20,241,217,0.25);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.order-title {
+    margin-top: 12px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #fff;
+}
+
+.order-title span {
+    color: var(--accent);
+}
+
+.order-desc {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
+.order-price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(20,241,217,0.06);
+    border: 1px dashed rgba(20,241,217,0.3);
+    border-radius: 0.75rem;
+    padding: 12px 18px;
+    margin: 18px 0 22px;
+}
+
+.order-price-row span {
+    color: #94a3b8;
+    font-size: 0.8rem;
+}
+
+.order-price-row strong {
+    color: var(--accent);
+    font-size: 1.35rem;
+    font-weight: 800;
+}
+
+.order-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 18px 0 10px;
+}
+
+.order-label i {
+    color: var(--accent);
+}
+
+.order-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.order-form input,
+.order-form textarea {
+    width: 100%;
+    margin-bottom: 12px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 0.6rem;
+    padding: 12px 16px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.order-form input:focus,
+.order-form textarea:focus {
+    border-color: rgba(20,241,217,0.6);
+    box-shadow: 0 0 0 3px rgba(20,241,217,0.1);
+}
+
+.order-form textarea {
+    resize: vertical;
+}
+
+.order-form input::placeholder,
+.order-form textarea::placeholder {
+    color: #64748b;
+}
+
+.pm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.pm-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 0.7rem;
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.pm-item:hover {
+    border-color: rgba(20,241,217,0.35);
+}
+
+.pm-item.pm-disabled {
+    pointer-events: none;
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.pm-item.pm-disabled:hover {
+    border-color: rgba(255,255,255,0.09);
+}
+
+.pm-item input {
+    position: absolute;
+    opacity: 0;
+}
+
+.pm-item:has(input:checked) {
+    border-color: var(--accent);
+    background: rgba(20,241,217,0.08);
+    box-shadow:
+        0 0 0 1px rgba(20,241,217,0.4),
+        0 0 20px rgba(20,241,217,0.1);
+}
+
+.pm-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(20,241,217,0.1);
+    color: var(--accent);
+    border-radius: 0.6rem;
+    font-size: 16px;
+}
+
+.pm-text {
+    color: #e2e8f0;
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.pm-text small {
+    display: block;
+    color: #64748b;
+    font-weight: 400;
+    font-size: 0.72rem;
+}
+
+.order-submit {
+    width: 100%;
+    margin-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #14f1d9, #0dc2af);
+    color: #0b0f1a;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 999px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 8px 30px rgba(20,241,217,0.25);
+}
+
+.order-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(20,241,217,0.4);
+}
+
+.order-note {
+    margin-top: 12px;
+    color: #64748b;
+    font-size: 0.75rem;
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* ── Panel QRIS ── */
+
+.qris-panel {
+    display: none;
+    text-align: center;
+}
+
+.qris-panel.active {
+    display: block;
+}
+
+.qris-card {
+    background: #fff;
+    border-radius: 1rem;
+    padding: 16px;
+    display: inline-block;
+    margin: 6px auto 14px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.qris-card canvas,
+.qris-card img {
+    display: block;
+    width: 220px;
+    height: 220px;
+    max-width: 100%;
+}
+
+.qris-title {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-top: 6px;
+}
+
+.qris-title i {
+    color: var(--accent);
+}
+
+.qris-sub {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    margin-top: 6px;
+}
+
+.qris-amount {
+    color: var(--accent);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+.qris-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 10px 18px;
+    background: rgba(20,241,217,0.08);
+    border: 1px solid rgba(20,241,217,0.2);
+    color: #a7f3eb;
+    font-size: 0.8rem;
+    border-radius: 0.7rem;
+}
+
+.qris-actions {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.qris-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #14f1d9, #0dc2af);
+    color: #0b0f1a;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 999px;
+    padding: 13px 26px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 8px 30px rgba(20,241,217,0.25);
+    transition: all 0.3s;
+}
+
+.qris-wa:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(20,241,217,0.4);
+}
+
+.qris-back {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #cbd5e1;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 999px;
+    padding: 10px 22px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.qris-back:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+@media (max-width: 560px) {
+    .order-row,
+    .pm-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .order-modal {
+        padding: 26px 20px 22px;
+    }
+}
+
+/* ============================================================
+   PORTFOLIO
+   ============================================================ */
+
+/* Page Header */
+.glow-teal {
+    text-shadow:
+        0 0 40px rgba(20, 241, 217, 0.15),
+        0 0 80px rgba(20, 241, 217, 0.06);
+}
+
+
+/* Fade In */
+.fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Project Card */
+.project-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    contain: paint;
+    isolation: isolate;
+}
+
+.project-card .overlay {
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        180deg,
+        rgba(11, 15, 26, 0.10) 0%,
+        rgba(11, 15, 26, 0.92) 100%
+    );
+
+    transition: opacity 0.4s ease;
+}
+
+.project-card:hover .overlay {
+    opacity: 0.70;
+}
+
+.project-card img {
+    transition: transform 0.6s ease;
+}
+
+.project-card:hover img {
+    transform: scale(1.06);
+}
+
+
+/* ============================================================
+   GLASS LIGHT REFLECTION
+   ============================================================ */
+
+.project-card::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 72%;
+    height: 100%;
+
+    background: linear-gradient(
+        115deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.15) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+
+    transform:
+        translateX(-150%)
+        skewX(-22deg);
+
+    filter: blur(10px);
+
+    pointer-events: none;
+
+    opacity: 1;
+
+    z-index: 2;
+
+    animation:
+        glassSweep 3.2s ease-in-out infinite;
+}
+
+.project-card:hover::before {
+    animation-duration: 1.8s;
+}
+
+@keyframes glassSweep {
+
+    0% {
+        transform:
+            translateX(-150%)
+            skewX(-22deg);
+        opacity: 1;
+    }
+
+    82% {
+        transform:
+            translateX(480%)
+            skewX(-22deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateX(480%)
+            skewX(-22deg);
+        opacity: 0;
+    }
+
+}
+
+
+/* ============================================================
+   FILTER BUTTON
+   ============================================================ */
+
+.filter-btn {
+    padding: 8px 22px;
+
+    border-radius: 50px;
+
+    font-size: 0.8rem;
+    font-weight: 500;
+
+    background: transparent;
+
+    border: 1px solid var(--glass-border);
+
+    color: var(--text-secondary);
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+
+    font-family: inherit;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    border-color: var(--accent);
+
+    color: var(--accent);
+
+    background: rgba(20, 241, 217, 0.06);
+}
+
+
+/* ============================================================
+   GLOSSY CARD
+   ============================================================ */
+
+.glass-card.rounded-2xl.fade-in,
+.glass-card.rounded-2xl[data-aos] {
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.glass-card.rounded-2xl.fade-in::before,
+.glass-card.rounded-2xl[data-aos]::before {
+
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    border-radius: inherit;
+
+    pointer-events: none;
+
+    z-index: 2;
+
+    background: radial-gradient(
+        circle at var(--mx, 50%) var(--my, 50%),
+        rgba(20, 241, 217, 0.10) 0%,
+        rgba(20, 241, 217, 0.03) 38%,
+        rgba(255, 255, 255, 0) 68%
+    );
+
+    mix-blend-mode: screen;
+
+    opacity: var(--glow, 0);
+
+    transition: opacity 0.35s ease;
+}
+
+/* ============================================================ */
+/* CONTACT — CSS DARI REPO                                     */
+/* ============================================================ */
+
+/* ============================================================ */
+/* SOCIAL ICON                                                  */
+/* ============================================================ */
+
+.social-icon {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 40px;
+
+    height: 40px;
+
+    border-radius: 9999px;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+
+    transition: all 0.25s ease;
+
+}
+
+
+.social-icon:hover {
+
+    background: var(--accent);
+
+    color: #0b0f1a;
+
+    border-color: var(--accent);
+
+    transform: scale(1.08);
+
+}
+
+
+/* ============================================================ */
+/* CONTACT ICON BOX                                             */
+/* ============================================================ */
+
+.contact-icon-box {
+
+    width: 50px;
+
+    height: 50px;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 1.3rem;
+
+    background: rgba(20, 241, 217, 0.08);
+
+    color: var(--accent);
+
+    flex-shrink: 0;
+
+    transition: all 0.3s ease;
+
+}
+
+
+.contact-item:hover .contact-icon-box {
+
+    background: var(--accent);
+
+    color: #0b0f1a;
+
+}
+
+
+/* ============================================================ */
+/* CONTACT FORM                                                 */
+/* ============================================================ */
+
+.form-input {
+
+    width: 100%;
+
+    padding: 14px 18px;
+
+    border-radius: 14px;
+
+    font-size: 0.9rem;
+
+    font-family: inherit;
+
+    color: #e2e8f0;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+
+    outline: none;
+
+    transition: border-color 0.3s ease;
+
+}
+
+
+.form-input:focus {
+
+    border-color: var(--accent);
+
+    box-shadow: 0 0 0 3px rgba(20, 241, 217, 0.06);
+
+}
+
+
+.form-input::placeholder {
+
+    color: #4a5568;
+
+}
+
+
+textarea.form-input {
+
+    resize: vertical;
+
+    min-height: 120px;
+
+}
+
+
+/* ============================================================ */
+/* MOBILE FIT                                                  */
+/* ============================================================ */
+
+.contact-item {
+
+    min-width: 0;
+
+}
+
+
+.contact-item > div:last-child {
+
+    min-width: 0;
+
+    overflow-wrap: anywhere;
+
+    word-break: break-word;
+
+}
+
+
+@media (max-width: 640px) {
+
+    .contact-item .contact-icon-box {
+
+        width: 44px;
+
+        height: 44px;
+
+        font-size: 1.05rem;
+
+    }
+
+
+    .glass-card {
+
+        max-width: 100%;
+
+    }
+
+}
+
+
+/* ============================================================ */
+/* GLOSSY EFFECT — CONTACT CARD                                */
+/* ============================================================ */
+
+.glass-card.rounded-2xl.fade-in,
+.glass-card.rounded-2xl[data-aos],
+.contact-item.glass-card {
+
+    position: relative;
+
+    transform-style: preserve-3d;
+
+}
+
+
+/* ============================================================ */
+/* GLOSSY LIGHT OVERLAY                                         */
+/* ============================================================ */
+
+.glass-card.rounded-2xl.fade-in::before,
+.glass-card.rounded-2xl[data-aos]::before,
+.contact-item.glass-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: inherit;
+
+    pointer-events: none;
+
+    z-index: 2;
+
+    background: radial-gradient(
+        circle at var(--mx, 50%) var(--my, 50%),
+        rgba(20, 241, 217, 0.10) 0%,
+        rgba(20, 241, 217, 0.03) 38%,
+        rgba(255, 255, 255, 0) 68%
+    );
+
+    mix-blend-mode: screen;
+
+    opacity: var(--glow, 0);
+
+    transition: opacity 0.35s ease;
+
+}
+
+        /* CSS akan kita masukkan setelah seluruh
+           dependency dari 5 halaman selesai dicek. */
+
+    </style>
+</head>
+
+<body>
+
+
+<!-- ============================================================ -->
+<!--  HEADER / NAVIGASI                                          -->
+<!-- ============================================================ -->
+<header class="fixed top-0 left-0 w-full z-50 glass-card backdrop-blur-lg bg-[rgba(11,15,26,0.80)]">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 test-navbar h-16 md:h-20">
+        <!-- Logo -->
+        <a href="#home" class="flex items-center gap-2 text-xl font-bold tracking-tight">
+            <span class="logo-gradient text-2xl">Jog.DEV</span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <div class="hidden md:block">
+            <nav class="flex items-center gap-8 text-sm font-medium">
+                <a href="#home" class="nav-link active text-white">Beranda</a>
+                <a href="#about" class="nav-link text-slate-400 hover:text-white transition">Tentang</a>
+                <a href="#services" class="nav-link text-slate-400 hover:text-white transition">Layanan</a>
+                <a href="#portfolio" class="nav-link text-slate-400 hover:text-white transition">Portofolio</a>
+                <a href="#contact" class="nav-link text-slate-400 hover:text-white transition">Kontak</a>
+            </nav>
+        </div>
+
+        <!-- CTA small (desktop) -->
+        <a href="https://wa.me/6285707680724"
+           target="_blank"
+           rel="noopener"
+           class="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold text-[#0b0f1a] bg-[#14f1d9] hover:bg-[#0dc2af] transition btn-lift">
+            <i class="fa-regular fa-paper-plane"></i> Diskusi
+        </a>
+
+        <!-- Hamburger (mobile) -->
+        <button id="menu-toggle"
+                class="md:hidden text-slate-300 hover:text-white text-2xl focus:outline-none"
+                aria-label="Buka menu"
+                aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+
+    <!-- Mobile Nav Drawer -->
+    <div id="mobile-menu"
+         class="mobile-nav md:hidden bg-[#121726] border-t border-white/5">
+
+        <div class="flex flex-col gap-1 px-6 pb-6 pt-3">
+            <a href="#home"
+               class="block py-2 text-white font-medium border-l-2 border-[#14f1d9] pl-3">
+                Beranda
+            </a>
+
+            <a href="#about"
+               class="block py-2 text-slate-400 hover:text-white pl-4 transition">
+                Tentang
+            </a>
+
+            <a href="#services"
+               class="block py-2 text-slate-400 hover:text-white pl-4 transition">
+                Layanan
+            </a>
+
+            <a href="#portfolio"
+               class="block py-2 text-slate-400 hover:text-white pl-4 transition">
+                Portofolio
+            </a>
+
+            <a href="#contact"
+               class="block py-2 text-slate-400 hover:text-white pl-4 transition">
+                Kontak
+            </a>
+
+            <hr class="border-white/5 my-2" />
+
+            <a href="https://wa.me/6285707680724"
+               target="_blank"
+               rel="noopener"
+               class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-[#0b0f1a] bg-[#14f1d9] transition">
+                <i class="fa-regular fa-paper-plane"></i> Diskusi
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- Spacer for fixed header -->
+<div class="h-16 md:h-20"></div>
+
+<!-- ============================================================ -->
+<!--  HERO SECTION                                               -->
+<!-- ============================================================ -->
+
+<section id="home" class="hero-bg relative overflow-hidden pt-10 pb-20 md:pt-20 md:pb-32 px-5">
+
+    <!-- Video Background Desktop & Tablet (>= 640px) -->
+    <video id="hero-video-desktop"
+           autoplay
+           loop
+           muted
+           playsinline
+           preload="auto"
+           class="hidden sm:block absolute inset-0 w-full h-full object-cover z-0 pointer-events-none">
+        <source src="videos/0902.mp4" type="video/mp4">
+    </video>
+
+    <!-- Video Background Mobile (< 640px) -->
+    <video id="hero-video-mobile"
+           autoplay
+           loop
+           muted
+           playsinline
+           preload="auto"
+           class="block sm:hidden absolute inset-0 w-full h-full object-cover z-0 pointer-events-none">
+        <source src="videos/0903.mp4" type="video/mp4">
+    </video>
+
+    <!-- Overlay -->
+    <div class="hero-overlay absolute inset-0 bg-[#0b0f1a]/20 pointer-events-none z-[1]"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+
+        <div class="max-w-4xl mx-auto text-center">
+
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-[#14f1d9] bg-[#14f1d9]/10 border border-[#14f1d9]/20 mb-6">
+                <i class="fa-solid fa-bolt"></i>
+                Web Developer &amp; Desain Digital
+            </div>
+
+            <!-- Headline -->
+            <h1 data-aos="fade-down"
+                class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight text-white hero-title-shadow">
+
+                Kami Wujudkan <br class="sm:hidden" />
+
+                <span class="text-[#14f1d9]">
+                    Website Impian
+                </span>
+
+                Anda
+            </h1>
+
+            <!-- Subtext -->
+            <p data-aos="fade-up"
+               class="mt-6 text-base sm:text-lg md:text-xl text-white max-w-2xl mx-auto leading-relaxed hero-sub-shadow">
+
+                Dari konsep hingga peluncuran — kami membangun website modern, cepat,
+                responsif, dan dirancang untuk mengembangkan bisnis Anda.
+
+                <span class="text-white/90 font-medium">
+                    #DigitalDenganGaya
+                </span>
+
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+
+                <a href="#about"
+                   data-aos="fade-right"
+                   class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full text-base font-semibold text-white border border-slate-600 hover:border-[#14f1d9] hover:text-[#14f1d9] transition btn-lift glass-card">
+
+                    <i class="fa-regular fa-user"></i>
+                    Siapa Kami
+
+                </a>
+
+                <a href="#portfolio"
+                   data-aos="fade-left"
+                   class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full text-base font-semibold text-[#0b0f1a] bg-[#14f1d9] hover:bg-[#0dc2af] transition btn-lift shadow-lg shadow-[#14f1d9]/20">
+
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    Lihat Proyek
+
+                </a>
+
+            </div>
+
+            <!-- 3 Poin Keunggulan -->
+            <div id="hero-trust-cards"
+                 class="mt-10 flex flex-col sm:grid sm:grid-cols-3 gap-3 items-center justify-center max-w-2xl mx-auto px-4">
+
+                <div data-aos="fade-up-right"
+                     class="glass-card w-[215px] sm:w-auto rounded-xl px-4 sm:px-3.5 py-2.5 flex items-center justify-start sm:justify-center gap-2.5 border border-slate-600 hover:border-[#14f1d9] transition shadow-md shadow-black/30">
+
+                    <div class="w-7 h-7 rounded-lg bg-[#14f1d9]/10 border border-[#14f1d9]/20 flex items-center justify-center text-[#14f1d9] text-xs shrink-0">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+
+                    <div class="text-xs font-semibold text-white leading-snug text-left">
+                        <div>Telah Membantu</div>
+                        <div>Banyak Bisnis</div>
+                    </div>
+
+                </div>
+
+                <div data-aos="fade-up"
+                     class="glass-card w-[215px] sm:w-auto rounded-xl px-4 sm:px-3.5 py-2.5 flex items-center justify-start sm:justify-center gap-2.5 border border-slate-600 hover:border-[#14f1d9] transition shadow-md shadow-black/30">
+
+                    <div class="w-7 h-7 rounded-lg bg-[#14f1d9]/10 border border-[#14f1d9]/20 flex items-center justify-center text-[#14f1d9] text-xs shrink-0">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+
+                    <div class="text-xs font-semibold text-white leading-snug text-left">
+                        <div>Desain Modern</div>
+                        <div>&amp; Cepat</div>
+                    </div>
+
+                </div>
+
+                <div data-aos="fade-up-left"
+                     class="glass-card w-[215px] sm:w-auto rounded-xl px-4 sm:px-3.5 py-2.5 flex items-center justify-start sm:justify-center gap-2.5 border border-slate-600 hover:border-[#14f1d9] transition shadow-md shadow-black/30">
+
+                    <div class="w-7 h-7 rounded-lg bg-[#14f1d9]/10 border border-[#14f1d9]/20 flex items-center justify-center text-[#14f1d9] text-xs shrink-0">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+
+                    <div class="text-xs font-semibold text-white leading-snug text-left">
+                        <div>Support Penuh</div>
+                        <div>Setiap Tahap</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ============================================================ -->
+<!--  MENGAPA MEMILIH Jog.DEV                                   -->
+<!-- ============================================================ -->
+<section class="py-16 md:py-24 px-5 bg-[#090d17]">
+    <div class="max-w-7xl mx-auto">
+
+        <div data-aos="fade-down" class="text-center max-w-xl mx-auto mb-14">
+            <span class="text-xs font-semibold uppercase tracking-widest text-[#14f1d9]">
+                Mengapa Kami
+            </span>
+
+            <h2 class="mt-3 text-3xl md:text-4xl font-bold text-white">
+                Mengapa Memilih
+                <span class="text-[#14f1d9]">Jog.DEV</span>?
+            </h2>
+
+            <p class="mt-3 text-slate-400 text-sm md:text-base">
+                Kami berkomitmen memberikan yang terbaik untuk setiap proyek.
+            </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <div data-aos="fade-right"
+                 data-aos-duration="500"
+                 data-aos-easing="ease-out-cubic"
+                 class="glass-card rounded-2xl p-6 md:p-7 text-center">
+
+                <div class="w-14 h-14 rounded-2xl bg-[#14f1d9]/10 flex items-center justify-center text-[#14f1d9] text-2xl mx-auto mb-4">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+
+                <h4 class="text-white font-semibold mb-1">
+                    Kode Berkualitas
+                </h4>
+
+                <p class="text-slate-400 text-xs leading-relaxed">
+                    Setiap baris kode ditulis dengan standar tinggi,
+                    bersih, dan mudah dikembangkan.
+                </p>
+            </div>
+
+
+            <div data-aos="zoom-out-up"
+                 data-aos-duration="500"
+                 data-aos-easing="ease-out-cubic"
+                 class="glass-card rounded-2xl p-6 md:p-7 text-center">
+
+                <div class="w-14 h-14 rounded-2xl bg-[#14f1d9]/10 flex items-center justify-center text-[#14f1d9] text-2xl mx-auto mb-4">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+
+                <h4 class="text-white font-semibold mb-1">
+                    Cepat & Responsif
+                </h4>
+
+                <p class="text-slate-400 text-xs leading-relaxed">
+                    Website optimal di semua perangkat dengan performa
+                    tinggi dan loading cepat.
+                </p>
+            </div>
+
+
+            <div data-aos="zoom-out-up"
+                 data-aos-duration="500"
+                 data-aos-easing="ease-out-cubic"
+                 class="glass-card rounded-2xl p-6 md:p-7 text-center">
+
+                <div class="w-14 h-14 rounded-2xl bg-[#14f1d9]/10 flex items-center justify-center text-[#14f1d9] text-2xl mx-auto mb-4">
+                    <i class="fa-solid fa-pen-ruler"></i>
+                </div>
+
+                <h4 class="text-white font-semibold mb-1">
+                    Desain Modern
+                </h4>
+
+                <p class="text-slate-400 text-xs leading-relaxed">
+                    Tampilan kekinian dengan UI/UX yang intuitif dan engaging.
+                </p>
+            </div>
+
+
+            <div data-aos="fade-left"
+                 data-aos-duration="500"
+                 data-aos-easing="ease-out-cubic"
+                 class="glass-card rounded-2xl p-6 md:p-7 text-center">
+
+                <div class="w-14 h-14 rounded-2xl bg-[#14f1d9]/10 flex items-center justify-center text-[#14f1d9] text-2xl mx-auto mb-4">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+
+                <h4 class="text-white font-semibold mb-1">
+                    Dukungan Penuh
+                </h4>
+
+                <p class="text-slate-400 text-xs leading-relaxed">
+                    Konsultasi gratis dan dukungan penuh sebelum,
+                    selama, dan setelah proyek.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ABOUT — HERO                                                 -->
+<!-- ============================================================ -->
+
+<section id="about" class="relative overflow-hidden pt-14 pb-20 md:pt-24 md:pb-28 px-5">
+
+    <!-- Background glow -->
+    <div class="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] rounded-full bg-[#14f1d9] opacity-[0.04] blur-[120px] pointer-events-none"></div>
+
+    <div class="absolute bottom-[-10%] right-[-5%] w-[400px] h-[400px] rounded-full bg-[#0ea5e9] opacity-[0.03] blur-[100px] pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto relative z-10">
+
+        <div class="grid md:grid-cols-2 gap-10 md:gap-[12rem] items-center">
+
+            <!-- Kiri: Teks -->
+            <div class="fade-in text-center md:text-left">
+
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-[#14f1d9] bg-[#14f1d9]/10 border border-[#14f1d9]/20 mb-5">
+                    <i class="fa-solid fa-user-astronaut"></i>
+                    Tentang Saya
+                </div>
+
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white glow-teal leading-tight"
+                    data-aos="fade-right">
+
+                    Halo, Saya
+                    <span class="logo-gradient">Jog.DEV</span>
+
+                </h1>
+
+                <p class="mt-4 text-slate-400 text-sm md:text-base max-w-xl leading-relaxed"
+                   data-aos="fade-right">
+
+                    Seorang <strong class="text-white">Front-End Web Developer</strong>
+                    yang memiliki semangat untuk menciptakan website modern,
+                    responsif, dan berkualitas tinggi.
+
+                </p>
+
+                <p class="mt-3 text-slate-400 text-sm md:text-base max-w-xl leading-relaxed"
+                   data-aos="fade-right">
+
+                    Saya percaya bahwa setiap website adalah representasi dari sebuah
+                    bisnis atau personal brand, sehingga setiap detail harus dirancang
+                    dengan baik agar memberikan pengalaman terbaik bagi penggunanya.
+
+                </p>
+
+                <div class="mt-7 flex flex-wrap gap-4 justify-center md:justify-start">
+
+                    <a href="https://github.com/jogboy-web"
+                       target="_blank"
+                       rel="noopener"
+                       data-aos="fade-up"
+                       class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-[#0b0f1a] bg-[#14f1d9] hover:bg-[#0dc2af] transition btn-lift shadow-lg shadow-[#14f1d9]/20">
+
+                        <i class="fa-brands fa-github"></i>
+                        GitHub
+
+                    </a>
+
+                    <a href="mailto:dirot224@gmail.com"
+                       data-aos="fade-up"
+                       class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white border border-slate-600 hover:border-[#14f1d9] transition btn-lift glass-card">
+
+                        <i class="fa-regular fa-envelope"></i>
+                        Kontak
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Kanan: Gambar -->
+            <div class="fade-in flex justify-center md:justify-start h-auto">
+
+                <div class="glass-reflect inline-block">
+
+                    <img src="boim-hero.jpeg"
+                         alt="Jog.DEV — Front-End Web Developer"
+                         data-aos="fade-left"
+                         class="w-full max-w-[18rem] max-h-[26rem] h-auto object-cover object-top rounded-2xl mx-auto"
+                         style="background: transparent;" />
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ============================================================ -->
+<!-- ABOUT — BIO & TECH STACK                                    -->
+<!-- ============================================================ -->
+
+<section class="py-16 md:py-20 px-5 bg-[#090d17]">
+
+    <div class="max-w-6xl mx-auto">
+
+        <div class="grid md:grid-cols-2 gap-10 md:gap-16">
+
+            <!-- Kiri: Bio -->
+            <div class="fade-in">
+
+                <span class="text-xs font-semibold uppercase tracking-widest text-[#14f1d9]"
+                      data-aos="fade-up-right">
+                    Siapa Saya
+                </span>
+
+                <h2 class="mt-2 text-2xl md:text-3xl font-bold text-white"
+                    data-aos="fade-up-right">
+                    Mewujudkan Ide Menjadi Website yang Modern
+                </h2>
+
+                <p class="mt-4 text-slate-400 text-sm leading-relaxed"
+                   data-aos="fade-up-right">
+
+                    Saya <strong class="text-white">Jog.DEV</strong>,
+                    seorang Front-End Web Developer yang berfokus pada pembuatan
+                    website dengan performa tinggi, desain yang responsif,
+                    dan kode yang bersih.
+
+                    Setiap proyek adalah kanvas bagi saya untuk menuangkan
+                    kreativitas dan keahlian teknis.
+
+                </p>
+
+                <p class="mt-4 text-slate-400 text-sm leading-relaxed"
+                   data-aos="fade-up-right">
+
+                    Dengan pengalaman di berbagai teknologi web modern seperti
+                    <span class="text-[#14f1d9]">React</span>,
+                    <span class="text-[#14f1d9]">Next.js</span>,
+                    <span class="text-[#14f1d9]">Tailwind CSS</span>, dan
+                    <span class="text-[#14f1d9]">JavaScript</span> —
+                    saya siap membantu mewujudkan website impian Anda,
+                    dari landing page sederhana hingga aplikasi web yang kompleks.
+
+                </p>
+
+                <p class="mt-4 text-slate-400 text-sm leading-relaxed"
+                   data-aos="fade-up-right">
+
+                    Prinsip kerja saya:
+                    <span class="text-white">kode yang rapi</span>,
+                    <span class="text-white">desain yang intuitif</span>, dan
+                    <span class="text-white">pengalaman pengguna yang maksimal</span>.
+
+                    Karena website yang baik bukan hanya tentang tampilan,
+                    tetapi juga bagaimana ia bekerja dan terasa saat digunakan.
+
+                </p>
+
+
+                <!-- Stat -->
+                <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+
+                    <div class="glass-card rounded-2xl p-3.5 text-center"
+                         data-aos="fade-up-right">
+                        <span class="block text-lg font-bold text-white">
+                            Handal
+                        </span>
+                        <span class="mt-1 block text-xs text-slate-500">
+                            Pengalaman nyata
+                        </span>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-3.5 text-center"
+                         data-aos="zoom-in-up">
+                        <span class="block text-lg font-bold text-white">
+                            Tepat Waktu
+                        </span>
+                        <span class="mt-1 block text-xs text-slate-500">
+                            Konsisten &amp; terukur
+                        </span>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-3.5 text-center"
+                         data-aos="fade-up-left">
+                        <span class="block text-lg font-bold text-white">
+                            Terpercaya
+                        </span>
+                        <span class="mt-1 block text-xs text-slate-500">
+                            Klien puas &amp; direkomendasikan
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Kanan: Tech Stack -->
+            <div data-aos="fade-up-left">
+
+                <span class="text-xs font-semibold uppercase tracking-widest text-[#14f1d9]">
+                    Keahlian
+                </span>
+
+                <h3 class="mt-2 text-2xl md:text-3xl font-bold text-white">
+                    Tech Stack
+                </h3>
+
+
+                <div class="mt-8 space-y-6">
+
+                    <!-- HTML / CSS / Tailwind -->
+                    <div>
+                        <div class="flex justify-between text-sm mb-1.5">
+                            <span class="text-slate-300">
+                                HTML / CSS / Tailwind
+                            </span>
+                            <span class="text-[#14f1d9] font-semibold">
+                                95%
+                            </span>
+                        </div>
+
+                        <div class="skill-bar">
+                            <div class="skill-bar-fill"
+                                 data-width="95%">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- JavaScript -->
+                    <div>
+                        <div class="flex justify-between text-sm mb-1.5">
+                            <span class="text-slate-300">
+                                JavaScript (ES6+)
+                            </span>
+                            <span class="text-[#14f1d9] font-semibold">
+                                88%
+                            </span>
+                        </div>
+
+                        <div class="skill-bar">
+                            <div class="skill-bar-fill"
+                                 data-width="88%">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- React / Next.js -->
+                    <div>
+                        <div class="flex justify-between text-sm mb-1.5">
+                            <span class="text-slate-300">
+                                React / Next.js
+                            </span>
+                            <span class="text-[#14f1d9] font-semibold">
+                                82%
+                            </span>
+                        </div>
+
+                        <div class="skill-bar">
+                            <div class="skill-bar-fill"
+                                 data-width="82%">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- UI/UX -->
+                    <div>
+                        <div class="flex justify-between text-sm mb-1.5">
+                            <span class="text-slate-300">
+                                UI/UX Design (Figma)
+                            </span>
+                            <span class="text-[#14f1d9] font-semibold">
+                                78%
+                            </span>
+                        </div>
+
+                        <div class="skill-bar">
+                            <div class="skill-bar-fill"
+                                 data-width="78%">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Git -->
+                    <div>
+                        <div class="flex justify-between text-sm mb-1.5">
+                            <span class="text-slate-300">
+                                Git / Version Control
+                            </span>
+                            <span class="text-[#14f1d9] font-semibold">
+                                85%
+                            </span>
+                        </div>
+
+                        <div class="skill-bar">
+                            <div class="skill-bar-fill"
+                                 data-width="85%">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ============================================================ -->
+<!-- SERVICES — HERO                                              -->
+<!-- ============================================================ -->
+
+<section id="services" class="relative overflow-hidden pt-12 pb-16 md:pt-20 md:pb-24 px-5">
+
+    <div class="absolute top-[-15%] left-[-8%] w-[400px] h-[400px] rounded-full bg-[#14f1d9] opacity-[0.04] blur-[100px] pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-[#14f1d9] bg-[#14f1d9]/10 border border-[#14f1d9]/20 mb-5">
+            <i class="fa-solid fa-bolt"></i> Layanan
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white glow-teal"
+            data-aos="fade-down">
+            Solusi <span class="text-[#14f1d9]">Digital</span> Lengkap
+        </h1>
+
+        <p class="mt-4 text-slate-400 text-sm md:text-lg max-w-2xl mx-auto leading-relaxed"
+           data-aos="fade-up">
+            Dari pembuatan website hingga optimasi digital — kami hadir untuk membantu
+            bisnis Anda tumbuh di era digital.
+        </p>
+
+    </div>
+
+</section>
+<!-- ============================================================ -->
+<!--  PAKET HARGA (PRICING)                                      -->
+<!-- ============================================================ -->
+
+<section id="paket" class="py-16 md:py-20 px-5 bg-[#090d17]">
+
+    <div class="max-w-6xl mx-auto">
+
+        <div data-aos="fade-down" class="text-center max-w-xl mx-auto mb-14">
+            <span class="text-xs font-semibold uppercase tracking-widest text-[#14f1d9]">
+                Paket Harga
+            </span>
+
+            <h2 class="mt-3 text-3xl md:text-4xl font-bold text-white">
+                Pilih Paket Sesuai Kebutuhan
+            </h2>
+
+            <p class="mt-3 text-slate-400 text-sm md:text-base">
+                Harga fleksibel untuk setiap skala bisnis.
+            </p>
+        </div>
+
+
+        <!-- Catatan harga fleksibel -->
+        <div data-aos="fade-up"
+             class="mb-8 mx-auto max-w-2xl glass-card rounded-2xl p-5 md:p-6 text-center border border-[#14f1d9]/20 bg-[#14f1d9]/[0.03]">
+
+            <p class="text-sm md:text-base text-slate-200 leading-relaxed">
+
+                <i class="fa-solid fa-circle-info text-[#14f1d9] mr-2"></i>
+
+                Harga di bawah
+                <span class="text-[#14f1d9] font-semibold">
+                    tidak pasti
+                </span>
+                dan
+                <span class="text-[#14f1d9] font-semibold">
+                    dapat menyesuaikan
+                </span>
+                dengan kebutuhan &amp; anggaran Anda.
+
+            </p>
+
+            <p class="mt-2 text-xs md:text-sm text-slate-400 leading-relaxed">
+
+                Setiap proyek itu unik — silakan ceritakan kebutuhan Anda,
+                nanti kami susunkan
+                <span class="text-white font-medium">
+                    harga terbaik yang fleksibel
+                </span>
+                untuk Anda.
+
+            </p>
+
+        </div>
+
+
+        <!-- Pricing Cards -->
+        <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+
+
+            <!-- ================================================== -->
+            <!-- PAKET BASIC                                       -->
+            <!-- ================================================== -->
+
+            <div data-aos="zoom-in-right"
+                 class="glass-card rounded-2xl p-7 md:p-8 text-center">
+
+                <span class="text-xs font-semibold uppercase tracking-wider text-[#14f1d9]">
+                    Basic
+                </span>
+
+                <h3 class="mt-1 text-3xl font-bold text-white">
+                    Mulai
+                    <span class="text-[#14f1d9]">
+                        Rp 250rb
+                    </span>
+                </h3>
+
+                <p class="text-xs text-slate-500">
+                    Cocok untuk personal / UMKM
+                </p>
+
+                <hr class="border-white/5 my-6" />
+
+                <ul class="space-y-3 text-sm text-slate-400 text-left">
+
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-[#14f1d9]"></i>
+                        1 Halaman (Landing Page)
+                    </li>
+
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-[#14f1d9]"></i>
+                        Desain Responsif
+                    </li>
+
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-[#14f1d9]"></i>
+                        Form Kontak
+                    </li>
+
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-[#14f1d9]"></i>
+                        Deploy Online
+                    </li>
+
+                    <li class="flex items-center gap-3 text-slate-600">
+                        <i class="fa-solid fa-xmark text-slate-600"></i>
+                        SEO Basic
+                    </li>
+
+                    <li class="flex items-center gap-3 text-slate-600">
+                        <i class="fa-solid fa-xmark text-slate-600"></i>
+                        Maintenance
+                    </li>
+
+                </ul>
+
+
+                <button type="button"
+                        class="btn-order mt-7 inline-flex items-center justify-center w-full gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white border border-slate-600 hover:border-[#14f1d9] transition btn-lift glass-card"
+                        data-package="Basic"
+                        data-desc="Cocok untuk personal / UMKM"
+                        data-price="Rp 250.000"
+                        onclick="openOrder(this)">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Pilih Paket
+
+                </button>
+
+            </div>
+
+
+            <!-- ================================================== -->
+            <!-- PAKET PRO                                         -->
+            <!-- ================================================== -->
+
+            <div data-aos="zoom-in"
+                 class="glass-card rounded-2xl p-7 md:p-8 text-center pricing-featured relative">
+
+                <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider text-[#0b0f1a] bg-[#14f1d9]">
+                    Terpopuler
+                </span>
+
+                <span class="text-xs font-semibold uppercase tracking-wider text-[#14f1d9]">
+                    Pro
+                </span>
+
+                <h3 class="mt-1 text-3xl font-bold text-white">
+                    Mulai
+                    <span class="text-[#14f1d9]">
+                        Rp 400rb
+                    </span>
+                </h3>
+
+                <p class="text-xs text-slate-500">
+                    Cocok untuk bisnis berkembang
+                </p>
+
+                <hr class="border-white/5 my-6" />
+
+                <ul class="space-y-3 text-sm text-slate-400 text-left">
+
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-[#14f1d9]"></i>
+                        Hingga 5 Halaman
+                    </li>
+
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-[#14f1d9]"></i>
+                        Desain UI/UX Premium
+                    </li>
+
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-[#14f1d9]"></i>
+                        Integrasi CMS
+                    </li>
+
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-[#14f1d9]"></i>
+                        Deploy Online
+                    </li>
+
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-[#14f1d9]"></i>
+                        SEO On-Page Basic
+                    </li>
+
+                    <li class="flex items-center gap-3 text-slate-600">
+                        <i class="fa-solid fa-xmark text-slate-600"></i>
+                        Maintenance
+                    </li>
+
+                </ul>
+
+
+                <button type="button"
+                        class="btn-order mt-7 inline-flex items-center justify-center w-full gap-2 px-6 py-3 rounded-full text-sm font-semibold text-[#0b0f1a] bg-[#14f1d9] hover:bg-[#0dc2af] transition btn-lift shadow-lg shadow-[#14f1d9]/20"
+                        data-package="Pro"
+                        data-desc="Cocok untuk bisnis berkembang"
+                        data-price="Rp 400.000"
+                        onclick="openOrder(this)">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Pilih Paket
+
+                </button>
+
+            </div>
+
+
+            <!-- ================================================== -->
+            <!-- PAKET ENTERPRISE                                  -->
+            <!-- ================================================== -->
+
+            <div data-aos="zoom-in-left"
+                 class="glass-card rounded-2xl p-7 md:p-8 text-center opacity-50 saturate-0 pointer-events-none select-none relative">
+
+                <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider text-[#0b0f1a] bg-slate-500">
+                    Segera Hadir
+                </span>
+
+                <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                    Enterprise
+                </span>
+
+                <h3 class="mt-1 text-3xl font-bold text-white">
+                    Mulai
+                    <span class="text-slate-400">
+                        Rp 12JT
+                    </span>
+                </h3>
+
+                <p class="text-xs text-slate-500">
+                    Cocok untuk perusahaan besar
+                </p>
+
+                <hr class="border-white/5 my-6" />
+
+                <ul class="space-y-3 text-sm text-slate-500 text-left">
+
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-slate-500"></i>
+                        Halaman Tak Terbatas
+                    </li>
+
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-slate-500"></i>
+                        Desain Kustom &amp; Design System
+                    </li>
+
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-slate-500"></i>
+                        Web App / Portal Lengkap
+                    </li>
+
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-slate-500"></i>
+                        Hosting &amp; Domain 2 Tahun
+                    </li>
+
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-slate-500"></i>
+                        SEO Komprehensif
+                    </li>
+
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-slate-500"></i>
+                        Maintenance 1 Tahun
+                    </li>
+
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-slate-500"></i>
+                        Support Prioritas 24/7
+                    </li>
+
+                </ul>
+
+
+                <button type="button"
+                        disabled
+                        class="mt-7 inline-flex items-center justify-center w-full gap-2 px-6 py-3 rounded-full text-sm font-semibold text-slate-500 border border-slate-600 cursor-not-allowed opacity-60">
+
+                    <i class="fa-solid fa-lock"></i>
+                    Belum Tersedia
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================== -->
+        <!-- LIHAT KARYA                                       -->
+        <!-- ================================================== -->
+
+        <div data-aos="fade-up"
+             class="mt-14 text-center">
+
+            <p class="text-slate-300 text-base md:text-lg leading-relaxed max-w-lg mx-auto">
+
+                Belum mau pesan? Lihat
+                <span class="text-[#14f1d9] font-semibold">
+                    karya kami
+                </span>
+                dan rasakan langsung kualitas setiap proyek yang telah kami selesaikan.
+
+            </p>
+
+            <div class="mt-6">
+
+                <a href="#portfolio"
+                   class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full text-base font-semibold text-white border border-slate-600 hover:border-[#14f1d9] transition btn-lift glass-card">
+
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    Lihat Karya
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ============================================================ -->
+<!--  FAQ                                                        -->
+<!-- ============================================================ -->
+
+<section class="py-16 md:py-20 px-5">
+
+    <div class="max-w-4xl mx-auto">
+
+        <div data-aos="zoom-in" class="text-center max-w-xl mx-auto mb-14">
+
+            <span class="text-xs font-semibold uppercase tracking-widest text-[#14f1d9]">
+                FAQ
+            </span>
+
+            <h2 class="mt-3 text-3xl md:text-4xl font-bold text-white">
+                Pertanyaan Umum
+            </h2>
+
+        </div>
+
+
+        <div class="space-y-4">
+
+            <!-- FAQ 1 -->
+            <details data-aos="fade-right"
+                     class="glass-card rounded-xl p-5 group open:border-[#14f1d9]/30">
+
+                <summary class="flex items-center justify-between text-white font-semibold cursor-pointer list-none">
+
+                    Berapa lama proses pembuatan website?
+
+                    <i class="fa-solid fa-chevron-down text-slate-500 group-open:rotate-180 transition-transform"></i>
+
+                </summary>
+
+                <p class="mt-3 text-slate-400 text-sm leading-relaxed">
+
+                    Tergantung kompleksitas. Landing page selesai dalam 2-3 hari,
+                    dan website selesai dalam 7-8 hari.
+
+                </p>
+
+            </details>
+
+
+            <!-- FAQ 2 -->
+            <details data-aos="fade-right"
+                     class="glass-card rounded-xl p-5 group open:border-[#14f1d9]/30">
+
+                <summary class="flex items-center justify-between text-white font-semibold cursor-pointer list-none">
+
+                    Apakah domain &amp; hosting disediakan?
+
+                    <i class="fa-solid fa-chevron-down text-slate-500 group-open:rotate-180 transition-transform"></i>
+
+                </summary>
+
+                <p class="mt-3 text-slate-400 text-sm leading-relaxed">
+
+                    <strong class="text-slate-200">Tidak.</strong>
+                    Biaya domain &amp; hosting
+                    <strong class="text-[#14f1d9]">ditanggung sendiri</strong>
+                    oleh Anda. Kami hanya menyediakan jasa pembuatan website dan
+                    <strong class="text-slate-200">deploy online</strong>
+                    ke server yang Anda miliki.
+
+                </p>
+
+                <p class="mt-3 text-slate-400 text-sm leading-relaxed">
+
+                    Tidak punya domain/hosting? Tenang — kami bisa bantu uruskan
+                    pendaftarannya, silakan tanyakan detail biayanya via WhatsApp.
+
+                </p>
+
+            </details>
+
+
+            <!-- FAQ 3 -->
+            <details data-aos="fade-right"
+                     class="glass-card rounded-xl p-5 group open:border-[#14f1d9]/30">
+
+                <summary class="flex items-center justify-between text-white font-semibold cursor-pointer list-none">
+
+                    Apakah saya bisa request revisi?
+
+                    <i class="fa-solid fa-chevron-down text-slate-500 group-open:rotate-180 transition-transform"></i>
+
+                </summary>
+
+                <p class="mt-3 text-slate-400 text-sm leading-relaxed">
+
+                    <strong class="text-slate-200">Bebas!</strong>
+                    Setiap paket memberikan revisi tanpa batas hingga hasilnya
+                    <strong class="text-[#14f1d9]">sesuai dengan yang Anda inginkan</strong>.
+
+                </p>
+
+            </details>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ============================================================ -->
+<!--  MODAL PEMBELIAN PAKET                                      -->
+<!-- ============================================================ -->
+
+<div id="order-overlay" class="order-overlay" onclick="closeOrder()">
+
+    <div class="order-modal" onclick="event.stopPropagation()">
+
+        <!-- Tombol Close -->
+        <button
+            type="button"
+            class="order-close"
+            onclick="closeOrder()"
+            aria-label="Tutup"
+        >
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+
+        <!-- ==================================================== -->
+        <!-- HEADER ORDER                                         -->
+        <!-- ==================================================== -->
+
+        <div id="order-head" class="order-head">
+
+            <span
+                class="order-badge"
+                id="om-package"
+            >
+                Paket Basic
+            </span>
+
+            <h3 class="order-title">
+                Pesan
+                <span id="om-package-name">
+                    Paket Basic
+                </span>
+            </h3>
+
+            <p
+                class="order-desc"
+                id="om-package-desc"
+            >
+                Cocok untuk personal / UMKM
+            </p>
+
+            <div class="order-price-row">
+
+                <span>
+                    Total Pembayaran
+                </span>
+
+                <strong id="om-price">
+                    Rp 2.500.000
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==================================================== -->
+        <!-- FORM PEMESANAN                                      -->
+        <!-- ==================================================== -->
+
+        <form
+            id="order-form"
+            class="order-form"
+            onsubmit="return submitOrder(event)"
+        >
+
+            <!-- Data Pemesan -->
+            <p class="order-label">
+                <i class="fa-solid fa-user"></i>
+                Data Pemesan
+            </p>
+
+
+            <div class="order-row">
+
+                <input
+                    type="text"
+                    id="of-name"
+                    placeholder="Nama Lengkap"
+                    required
+                />
+
+                <input
+                    type="tel"
+                    id="of-phone"
+                    placeholder="No. WhatsApp"
+                    required
+                />
+
+            </div>
+
+
+            <!-- Email -->
+            <input
+                type="email"
+                id="of-email"
+                placeholder="Email (opsional)"
+            />
+
+
+            <!-- ================================================= -->
+            <!-- METODE PEMBAYARAN                                -->
+            <!-- ================================================= -->
+
+            <p class="order-label">
+
+                <i class="fa-solid fa-wallet"></i>
+
+                Metode Pembayaran
+
+            </p>
+
+
+            <div class="pm-grid">
+
+                <!-- Transfer Bank -->
+                <label class="pm-item">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="Transfer Bank"
+                        checked
+                    />
+
+                    <span class="pm-icon">
+                        <i class="fa-solid fa-university"></i>
+                    </span>
+
+                    <span class="pm-text">
+
+                        Transfer Bank
+
+                        <small>
+                            BCA · Mandiri · BRI · BNI
+                        </small>
+
+                    </span>
+
+                </label>
+
+
+                <!-- QRIS -->
+                <label
+                    class="pm-item pm-disabled"
+                    title="Segera hadir"
+                >
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="QRIS"
+                        disabled
+                    />
+
+                    <span class="pm-icon">
+
+                        <i class="fa-solid fa-qrcode"></i>
+
+                    </span>
+
+                    <span class="pm-text">
+
+                        QRIS
+
+                        <small>
+                            Segera hadir
+                        </small>
+
+                    </span>
+
+                </label>
+
+
+                <!-- E-Wallet -->
+                <label class="pm-item">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="E-Wallet"
+                    />
+
+                    <span class="pm-icon">
+
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+
+                    </span>
+
+                    <span class="pm-text">
+
+                        E-Wallet
+
+                        <small>
+                            GoPay · OVO · DANA · ShopeePay
+                        </small>
+
+                    </span>
+
+                </label>
+
+
+                <!-- Kartu Kredit -->
+                <label
+                    class="pm-item pm-disabled"
+                    title="Segera hadir"
+                >
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="Kartu Kredit"
+                        disabled
+                    />
+
+                    <span class="pm-icon">
+
+                        <i class="fa-regular fa-credit-card"></i>
+
+                    </span>
+
+                    <span class="pm-text">
+
+                        Kartu Kredit
+
+                        <small>
+                            Segera hadir
+                        </small>
+
+                    </span>
+
+                </label>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- CATATAN                                          -->
+            <!-- ================================================= -->
+
+            <label
+                class="order-label"
+                for="of-notes"
+            >
+
+                <i class="fa-solid fa-pen"></i>
+
+                Catatan (opsional)
+
+            </label>
+
+
+            <textarea
+                id="of-notes"
+                rows="3"
+                placeholder="Ceritakan kebutuhan website Anda..."
+            ></textarea>
+
+
+            <!-- ================================================= -->
+            <!-- SUBMIT                                            -->
+            <!-- ================================================= -->
+
+            <button
+                type="submit"
+                class="order-submit"
+            >
+
+                <i class="fa-solid fa-bag-shopping"></i>
+
+                Pesan Sekarang
+
+            </button>
+
+
+            <!-- Informasi -->
+            <p class="order-note">
+
+                <i class="fa-solid fa-circle-info"></i>
+
+                Setelah itu, WhatsApp kami akan terbuka dengan
+                data pemesanan yang sudah terisi — tinggal tekan
+                tombol Kirim.
+
+            </p>
+
+
+            <!-- WhatsApp -->
+            <p class="order-note">
+
+                Anda dapat menghubungi
+
+                <a
+                    href="https://wa.me/6285707680724"
+                    target="_blank"
+                    style="
+                        color:var(--accent);
+                        font-weight:600;
+                        text-decoration:none;
+                        border-bottom:1px dashed rgba(20,241,217,0.5);
+                    "
+                >
+
+                    WhatsApp kami
+
+                    <i class="fa-brands fa-whatsapp"></i>
+
+                </a>
+
+                untuk permintaan yang lebih jelas.
+
+            </p>
+
+        </form>
+
+
+        <!-- ==================================================== -->
+        <!-- PANEL QRIS                                           -->
+        <!-- ==================================================== -->
+
+        <div
+            id="qris-panel"
+            class="qris-panel"
+        >
+
+            <div class="qris-title">
+
+                <i class="fa-solid fa-qrcode"></i>
+
+                Scan untuk Membayar
+
+            </div>
+
+
+            <p class="qris-sub">
+
+                Silakan scan QRIS di bawah ini menggunakan
+                aplikasi pembayaran apa pun
+                (GoPay, OVO, DANA, ShopeePay, m-Banking, dll).
+
+            </p>
+
+
+            <div class="qris-amount">
+
+                Total:
+
+                <span id="qris-amount">
+                    Rp 0
+                </span>
+
+            </div>
+
+
+            <!-- QR Code -->
+            <div class="qris-card">
+
+                <canvas id="qris-canvas"></canvas>
+
+            </div>
+
+
+            <p class="qris-sub">
+
+                Pesanan:
+
+                <span id="qris-notes"></span>
+
+            </p>
+
+
+            <div class="qris-hint">
+
+                <i class="fa-solid fa-circle-info"></i>
+
+                Setelah membayar, kirim bukti transfer
+                untuk mempercepat konfirmasi.
+
+            </div>
+
+
+            <!-- QRIS Actions -->
+            <div class="qris-actions">
+
+                <a
+                    id="qris-wa-link"
+                    href="#"
+                    target="_blank"
+                    rel="noopener"
+                    class="qris-wa"
+                >
+
+                    <i class="fa-brands fa-whatsapp"></i>
+
+                    Konfirmasi via WhatsApp
+
+                </a>
+
+
+                <button
+                    type="button"
+                    class="qris-back"
+                    onclick="backToForm()"
+                >
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    Ganti Metode Pembayaran
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!--  PORTFOLIO                                                  -->
+<!-- ============================================================ -->
+
+<section id="portfolio">
+
+    <!-- ======================================================== -->
+    <!-- PAGE HEADER                                               -->
+    <!-- ======================================================== -->
+
+    <section class="relative overflow-hidden pt-12 pb-16 md:pt-20 md:pb-24 px-5">
+
+        <div
+            class="absolute top-[-15%] left-[-8%] w-[400px] h-[400px] rounded-full bg-[#14f1d9] opacity-[0.04] blur-[100px] pointer-events-none">
+        </div>
+
+        <div
+            data-aos="fade-down"
+            class="max-w-4xl mx-auto text-center relative z-10">
+
+            <div
+                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-[#14f1d9] bg-[#14f1d9]/10 border border-[#14f1d9]/20 mb-5">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+                Portofolio
+
+            </div>
+
+            <h1
+                class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white glow-teal">
+
+                Karya
+                <span class="text-[#14f1d9]">
+                    Terbaik
+                </span>
+                Kami
+
+            </h1>
+
+            <p
+                class="mt-4 text-slate-400 text-sm md:text-lg max-w-2xl mx-auto leading-relaxed">
+
+                Beberapa proyek yang telah kami kerjakan
+                dengan penuh dedikasi dan cinta.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================================== -->
+    <!-- FILTER                                                    -->
+    <!-- ======================================================== -->
+
+    <section class="px-5 pb-8">
+
+        <div
+            data-aos="fade-up"
+            class="max-w-4xl mx-auto flex flex-wrap justify-center gap-3">
+
+            <button
+                class="filter-btn active"
+                data-filter="all">
+
+                Semua
+
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="web-app">
+
+                Web App
+
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="ecommerce">
+
+                E-Commerce
+
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="company">
+
+                Company Profile
+
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="landing">
+
+                Landing Page
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================================== -->
+    <!-- PROJECTS GRID                                             -->
+    <!-- ======================================================== -->
+
+    <section class="pb-20 md:pb-28 px-5">
+
+        <div class="max-w-7xl mx-auto">
+
+            <div
+                class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+                id="projects-grid">
+
+
+                <!-- ================================================= -->
+                <!-- PROJECT 1 — GEARX                                 -->
+                <!-- ================================================= -->
+
+                <div
+                    data-aos="zoom-in"
+                    class="project-card group block h-80 rounded-2xl relative"
+                    data-category="landing">
+
+                    <a
+                        href="gearpage.html"
+                        class="block w-full h-full">
+
+                        <div
+                            class="relative w-full h-full">
+
+                            <img
+                                src="images/gearx.png"
+                                alt="GearX Store"
+                                class="w-full h-full object-cover"
+                                loading="lazy">
+
+                            <div
+                                class="overlay rounded-2xl">
+                            </div>
+
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-5 md:p-6 z-10">
+
+                                <span
+                                    class="inline-block px-3 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider text-[#0b0f1a] bg-[#14f1d9]/90 mb-2">
+
+                                    Landing Page
+
+                                </span>
+
+                                <h3
+                                    class="text-white text-lg font-bold">
+
+                                    GearX Store
+
+                                </h3>
+
+                                <p
+                                    class="text-slate-300 text-xs mt-1">
+
+                                    Toko aksesoris motor premium
+                                    dengan UI modern.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                    <div
+                        class="absolute bottom-3 right-3 z-20">
+
+                        <a
+                            href="gearpage.html"
+                            class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] font-semibold text-[#0b0f1a] bg-[#14f1d9] hover:bg-[#0dc2af] transition shadow-lg">
+
+                            View Project
+
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- PROJECT 2 — CLEAR.LAUNDRY                         -->
+                <!-- ================================================= -->
+
+                <div
+                    data-aos="zoom-in"
+                    class="project-card group block h-80 rounded-2xl relative"
+                    data-category="landing">
+
+                    <a
+                        href="clearlaundry.html"
+                        class="block w-full h-full">
+
+                        <div
+                            class="relative w-full h-full">
+
+                            <img
+                                src="images/clearlaundry.png"
+                                alt="Clear.Laundry"
+                                class="w-full h-full object-cover"
+                                loading="lazy">
+
+                            <div
+                                class="overlay rounded-2xl">
+                            </div>
+
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-5 md:p-6 z-10">
+
+                                <span
+                                    class="inline-block px-3 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider text-[#0b0f1a] bg-[#14f1d9]/90 mb-2">
+
+                                    Landing Page
+
+                                </span>
+
+                                <h3
+                                    class="text-white text-lg font-bold">
+
+                                    Clear.Laundry
+
+                                </h3>
+
+                                <p
+                                    class="text-slate-300 text-xs mt-1">
+
+                                    Layanan laundry dengan tampilan
+                                    modern dan profesional.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                    <div
+                        class="absolute bottom-3 right-3 z-20">
+
+                        <a
+                            href="clearlaundry.html"
+                            class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] font-semibold text-[#0b0f1a] bg-[#14f1d9] hover:bg-[#0dc2af] transition shadow-lg">
+
+                            View Project
+
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- PROJECT 3 — DUNIAWANGI                            -->
+                <!-- ================================================= -->
+
+                <div
+                    data-aos="zoom-in"
+                    class="project-card group block h-80 rounded-2xl relative"
+                    data-category="landing">
+
+                    <a
+                        href="parfum.html"
+                        class="block w-full h-full">
+
+                        <div
+                            class="relative w-full h-full">
+
+                            <img
+                                src="images/parfum.png"
+                                alt="DuniaWangi"
+                                class="w-full h-full object-cover"
+                                loading="lazy">
+
+                            <div
+                                class="overlay rounded-2xl">
+                            </div>
+
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-5 md:p-6 z-10">
+
+                                <span
+                                    class="inline-block px-3 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider text-[#0b0f1a] bg-[#14f1d9]/90 mb-2">
+
+                                    Landing Page
+
+                                </span>
+
+                                <h3
+                                    class="text-white text-lg font-bold">
+
+                                    DuniaWangi
+
+                                </h3>
+
+                                <p
+                                    class="text-slate-300 text-xs mt-1">
+
+                                    Toko parfum premium dengan
+                                    pengalaman belanja elegan.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                    <div
+                        class="absolute bottom-3 right-3 z-20">
+
+                        <a
+                            href="parfum.html"
+                            class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] font-semibold text-[#0b0f1a] bg-[#14f1d9] hover:bg-[#0dc2af] transition shadow-lg">
+
+                            View Project
+
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- PROJECT 4 — SG SPEEDGAME                           -->
+                <!-- ================================================= -->
+
+                <div
+                    data-aos="zoom-in"
+                    class="project-card group block h-80 rounded-2xl relative"
+                    data-category="landing">
+
+                    <a
+                        href="sg-gaming.html"
+                        class="block w-full h-full">
+
+                        <div
+                            class="relative w-full h-full">
+
+                            <img
+                                src="images/sg-gaming.png"
+                                alt="SG SpeedGame"
+                                class="w-full h-full object-cover"
+                                loading="lazy">
+
+                            <div
+                                class="overlay rounded-2xl">
+                            </div>
+
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-5 md:p-6 z-10">
+
+                                <span
+                                    class="inline-block px-3 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider text-[#0b0f1a] bg-[#14f1d9]/90 mb-2">
+
+                                    Landing Page
+
+                                </span>
+
+                                <h3
+                                    class="text-white text-lg font-bold">
+
+                                    SG SpeedGame
+
+                                </h3>
+
+                                <p
+                                    class="text-slate-300 text-xs mt-1">
+
+                                    Website gaming dengan
+                                    tampilan modern dan dinamis.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                    <div
+                        class="absolute bottom-3 right-3 z-20">
+
+                        <a
+                            href="sg-gaming.html"
+                            class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] font-semibold text-[#0b0f1a] bg-[#14f1d9] hover:bg-[#0dc2af] transition shadow-lg">
+
+                            View Project
+
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- PROJECT 5 — KILAUSTORE                             -->
+                <!-- ================================================= -->
+
+                <div
+                    data-aos="zoom-in"
+                    class="project-card group block h-80 rounded-2xl relative"
+                    data-category="landing">
+
+                    <a
+                        href="kilaustore.html"
+                        class="block w-full h-full">
+
+                        <div
+                            class="relative w-full h-full">
+
+                            <img
+                                src="images/kilaustore.png"
+                                alt="KilauStore"
+                                class="w-full h-full object-cover"
+                                loading="lazy">
+
+                            <div
+                                class="overlay rounded-2xl">
+                            </div>
+
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-5 md:p-6 z-10">
+
+                                <span
+                                    class="inline-block px-3 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider text-[#0b0f1a] bg-[#14f1d9]/90 mb-2">
+
+                                    Landing Page
+
+                                </span>
+
+                                <h3
+                                    class="text-white text-lg font-bold">
+
+                                    KilauStore
+
+                                </h3>
+
+                                <p
+                                    class="text-slate-300 text-xs mt-1">
+
+                                    Butik perhiasan mewah dengan
+                                    nuansa elegan dan premium.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                    <div
+                        class="absolute bottom-3 right-3 z-20">
+
+                        <a
+                            href="kilaustore.html"
+                            class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] font-semibold text-[#0b0f1a] bg-[#14f1d9] hover:bg-[#0dc2af] transition shadow-lg">
+
+                            View Project
+
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- PROJECT 6 — E-SPORT                               -->
+                <!-- ================================================= -->
+
+                <div
+                    data-aos="zoom-in"
+                    class="project-card group block h-80 rounded-2xl relative"
+                    data-category="landing">
+
+                    <a
+                        href="sport.html"
+                        class="block w-full h-full">
+
+                        <div
+                            class="relative w-full h-full">
+
+                            <img
+                                src="images/sport.png"
+                                alt="E-Sport"
+                                class="w-full h-full object-cover"
+                                loading="lazy">
+
+                            <div
+                                class="overlay rounded-2xl">
+                            </div>
+
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-5 md:p-6 z-10">
+
+                                <span
+                                    class="inline-block px-3 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider text-[#0b0f1a] bg-[#14f1d9]/90 mb-2">
+
+                                    Landing Page
+
+                                </span>
+
+                                <h3
+                                    class="text-white text-lg font-bold">
+
+                                    E-Sport
+
+                                </h3>
+
+                                <p
+                                    class="text-slate-300 text-xs mt-1">
+
+                                    Website esports dengan
+                                    visual modern dan energik.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                    <div
+                        class="absolute bottom-3 right-3 z-20">
+
+                        <a
+                            href="sport.html"
+                            class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] font-semibold text-[#0b0f1a] bg-[#14f1d9] hover:bg-[#0dc2af] transition shadow-lg">
+
+                            View Project
+
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==================================================== -->
+            <!-- EMPTY STATE                                           -->
+            <!-- ==================================================== -->
+
+            <div
+                id="empty-state"
+                class="hidden text-center py-20 fade-in">
+
+                <div
+                    class="text-6xl text-slate-600 mb-5">
+
+                    <i class="fa-regular fa-folder-open"></i>
+
+                </div>
+
+                <h3
+                    class="text-xl font-semibold text-white mb-2">
+
+                    Belum Ada Proyek
+
+                </h3>
+
+                <p
+                    class="text-slate-400 text-sm">
+
+                    Belum ada proyek untuk kategori ini.
+                    Nantikan karya terbaru kami!
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================================== -->
+    <!-- TESTIMONIALS                                              -->
+    <!-- ======================================================== -->
+
+    <section
+        class="py-16 md:py-24 px-5 bg-[#090d17]">
+
+        <div class="max-w-7xl mx-auto">
+
+            <div
+                data-aos="fade-down"
+                class="text-center max-w-xl mx-auto mb-14">
+
+                <span
+                    class="text-xs font-semibold uppercase tracking-widest text-[#14f1d9]">
+
+                    Testimoni
+
+                </span>
+
+                <h2
+                    class="mt-3 text-3xl md:text-4xl font-bold text-white">
+
+                    Kata Klien Kami
+
+                </h2>
+
+                <p
+                    class="mt-3 text-slate-400 text-sm md:text-base">
+
+                    Mereka yang sudah bekerja sama dengan kami.
+
+                </p>
+
+            </div>
+
+
+            <div
+                class="grid md:grid-cols-3 gap-6 md:gap-8">
+
+
+                <!-- ================================================= -->
+                <!-- TESTIMONI 1                                        -->
+                <!-- ================================================= -->
+
+                <div
+                    data-aos="fade-up-right"
+                    class="glass-card rounded-2xl p-6 md:p-7">
+
+                    <div
+                        class="flex items-center gap-1 text-[#14f1d9] mb-4 text-sm">
+
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+
+                    </div>
+
+                    <i
+                        class="fa-solid fa-quote-left"
+                        style="
+                            color:var(--accent);
+                            opacity:0.25;
+                            font-size:1.5rem;
+                            margin-bottom:8px;
+                            display:block;
+                        ">
+                    </i>
+
+                    <p
+                        class="text-slate-300 text-sm leading-relaxed mb-5">
+
+                        "Tim Jog.DEV sangat profesional.
+                        Website perusahaan kami jadi lebih modern
+                        dan loading-ya super cepat. Recommended!"
+
+                    </p>
+
+                    <div
+                        class="flex items-center gap-3">
+
+                        <div
+                            class="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center text-sm font-bold text-white">
+
+                            RA
+
+                        </div>
+
+                        <div>
+
+                            <p
+                                class="text-white text-sm font-semibold">
+
+                                Rina Amalia
+
+                            </p>
+
+                            <p
+                                class="text-slate-500 text-xs">
+
+                                CEO, GreenEnergy Corp
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- TESTIMONI 2                                        -->
+                <!-- ================================================= -->
+
+                <div
+                    data-aos="zoom-in-up"
+                    class="glass-card rounded-2xl p-6 md:p-7">
+
+                    <div
+                        class="flex items-center gap-1 text-[#14f1d9] mb-4 text-sm">
+
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+
+                    </div>
+
+                    <i
+                        class="fa-solid fa-quote-left"
+                        style="
+                            color:var(--accent);
+                            opacity:0.25;
+                            font-size:1.5rem;
+                            margin-bottom:8px;
+                            display:block;
+                        ">
+                    </i>
+
+                    <p
+                        class="text-slate-300 text-sm leading-relaxed mb-5">
+
+                        "Desain UI/UX-nya keren banget!
+                        Pengguna aplikasi kami meningkat 40%
+                        setelah redesign. Kerja keras tim Jog.DEV."
+
+                    </p>
+
+                    <div
+                        class="flex items-center gap-3">
+
+                        <div
+                            class="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center text-sm font-bold text-white">
+
+                            DP
+
+                        </div>
+
+                        <div>
+
+                            <p
+                                class="text-white text-sm font-semibold">
+
+                                Dimas Pratama
+
+                            </p>
+
+                            <p
+                                class="text-slate-500 text-xs">
+
+                                Founder, ModaVault
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- TESTIMONI 3                                        -->
+                <!-- ================================================= -->
+
+                <div
+                    data-aos="fade-up-left"
+                    class="glass-card rounded-2xl p-6 md:p-7">
+
+                    <div
+                        class="flex items-center gap-1 text-[#14f1d9] mb-4 text-sm">
+
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+
+                    </div>
+
+                    <i
+                        class="fa-solid fa-quote-left"
+                        style="
+                            color:var(--accent);
+                            opacity:0.25;
+                            font-size:1.5rem;
+                            margin-bottom:8px;
+                            display:block;
+                        ">
+                    </i>
+
+                    <p
+                        class="text-slate-300 text-sm leading-relaxed mb-5">
+
+                        "SEO website kami naik ke halaman pertama
+                        Google dalam 3 bulan. Pelayanan ramah dan
+                        hasilnya nyata. Sangat puas!"
+
+                    </p>
+
+                    <div
+                        class="flex items-center gap-3">
+
+                        <div
+                            class="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center text-sm font-bold text-white">
+
+                            SN
+
+                        </div>
+
+                        <div>
+
+                            <p
+                                class="text-white text-sm font-semibold">
+
+                                Siti Nurhaliza
+
+                            </p>
+
+                            <p
+                                class="text-slate-500 text-xs">
+
+                                Pemilik, BakeryArt
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- CONTACT -->
+<!-- ============================================================ -->
+
+<section id="contact">
+
+    <!-- ======================================================== -->
+    <!-- PAGE HEADER -->
+    <!-- ======================================================== -->
+
+    <section class="relative overflow-hidden pt-12 pb-16 md:pt-20 md:pb-24 px-5">
+
+        <div
+            class="absolute top-[-15%] left-[-8%] w-[400px] h-[400px] rounded-full bg-[#14f1d9] opacity-[0.04] blur-[100px] pointer-events-none">
+        </div>
+
+        <div
+            data-aos="fade-down"
+            class="max-w-4xl mx-auto text-center relative z-10">
+
+            <div
+                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-[#14f1d9] bg-[#14f1d9]/10 border border-[#14f1d9]/20 mb-5">
+
+                <i class="fa-regular fa-paper-plane"></i>
+
+                Kontak
+
+            </div>
+
+            <h1
+                class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white glow-teal">
+
+                Hubungi
+                <span class="text-[#14f1d9]">
+                    Kami
+                </span>
+
+            </h1>
+
+            <p
+                class="mt-4 text-slate-400 text-sm md:text-lg max-w-2xl mx-auto leading-relaxed">
+
+                Punya pertanyaan atau ingin diskusi proyek?
+                Kami siap membantu!
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================================== -->
+    <!-- CONTACT CONTENT -->
+    <!-- ======================================================== -->
+
+    <section class="pb-20 px-5">
+
+        <div class="max-w-6xl mx-auto">
+
+            <div class="grid md:grid-cols-2 gap-10 md:gap-16">
+
+
+                <!-- ================================================= -->
+                <!-- INFO KONTAK -->
+                <!-- ================================================= -->
+
+                <div class="space-y-6 fade-in">
+
+
+                    <!-- WhatsApp -->
+
+                    <div
+                        data-aos="fade-right"
+                        class="contact-item glass-card rounded-2xl p-5 flex items-center gap-4">
+
+                        <div class="contact-icon-box">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+
+                        <div class="min-w-0">
+
+                            <p
+                                class="text-xs text-slate-500 uppercase tracking-wider font-medium">
+
+                                WhatsApp
+
+                            </p>
+
+                            <p
+                                class="text-white font-semibold break-words">
+
+                                +62 857-0768-0724
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Email -->
+
+                    <div
+                        data-aos="fade-right"
+                        class="contact-item glass-card rounded-2xl p-5 flex items-center gap-4">
+
+                        <div class="contact-icon-box">
+                            <i class="fa-regular fa-envelope"></i>
+                        </div>
+
+                        <div class="min-w-0">
+
+                            <p
+                                class="text-xs text-slate-500 uppercase tracking-wider font-medium">
+
+                                Email
+
+                            </p>
+
+                            <p
+                                class="text-white font-semibold break-words">
+
+                                dirot224@gmail.com
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Lokasi -->
+
+                    <div
+                        data-aos="fade-right"
+                        class="contact-item glass-card rounded-2xl p-5 flex items-center gap-4">
+
+                        <div class="contact-icon-box">
+                            <i class="fa-regular fa-location-dot"></i>
+                        </div>
+
+                        <div class="min-w-0">
+
+                            <p
+                                class="text-xs text-slate-500 uppercase tracking-wider font-medium">
+
+                                Lokasi
+
+                            </p>
+
+                            <p
+                                class="text-white font-semibold break-words">
+
+                                Kec. Wiradesa, Kab. Pekalongan,
+                                Jawa Tengah
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Jam Operasional -->
+
+                    <div
+                        data-aos="fade-right"
+                        class="contact-item glass-card rounded-2xl p-5 flex items-center gap-4">
+
+                        <div class="contact-icon-box">
+                            <i class="fa-regular fa-clock"></i>
+                        </div>
+
+                        <div class="min-w-0">
+
+                            <p
+                                class="text-xs text-slate-500 uppercase tracking-wider font-medium">
+
+                                Jam Operasional
+
+                            </p>
+
+                            <p
+                                class="text-white font-semibold break-words">
+
+                                Sen – Sab, 09.00 – 18.00
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ================================================= -->
+                    <!-- SOCIAL MEDIA -->
+                    <!-- ================================================= -->
+
+                    <div
+                        data-aos="fade-right"
+                        class="glass-card rounded-2xl p-5">
+
+                        <p
+                            class="text-sm font-semibold text-white mb-4">
+
+                            Ikuti Kami
+
+                        </p>
+
+                        <div class="flex flex-wrap gap-3">
+
+                            <a
+                                href="https://www.instagram.com/mysteller_/"
+                                target="_blank"
+                                rel="noopener"
+                                class="social-icon text-slate-400 text-base"
+                                aria-label="Instagram">
+
+                                <i class="fa-brands fa-instagram"></i>
+
+                            </a>
+
+                            <a
+                                href="https://wa.me/6285707680724"
+                                target="_blank"
+                                rel="noopener"
+                                class="social-icon text-slate-400 text-base"
+                                aria-label="WhatsApp">
+
+                                <i class="fa-brands fa-whatsapp"></i>
+
+                            </a>
+
+                            <a
+                                href="https://www.tiktok.com/@nocturnal.ml.id"
+                                target="_blank"
+                                rel="noopener"
+                                class="social-icon text-slate-400 text-base"
+                                aria-label="TikTok">
+
+                                <i class="fa-brands fa-tiktok"></i>
+
+                            </a>
+
+                            <a
+                                href="https://github.com/jogboy-web"
+                                target="_blank"
+                                rel="noopener"
+                                class="social-icon text-slate-400 text-base"
+                                aria-label="GitHub">
+
+                                <i class="fa-brands fa-github"></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- CONTACT FORM -->
+                <!-- ================================================= -->
+
+                <div
+                    data-aos="fade-left"
+                    class="glass-card rounded-2xl p-6 md:p-8">
+
+                    <h3
+                        class="text-xl font-bold text-white mb-2">
+
+                        Kirim Pesan
+
+                    </h3>
+
+                    <p
+                        class="text-sm text-slate-400 mb-6">
+
+                        Isi form di bawah dan kami akan membalas segera.
+
+                    </p>
+
+
+                    <form onsubmit="return sendToWhatsApp(event)">
+
+
+                        <!-- Nama -->
+
+                        <div class="mb-4">
+
+                            <label
+                                class="block text-sm font-medium text-slate-300 mb-1.5">
+
+                                Nama Lengkap
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="cf-name"
+                                class="form-input"
+                                placeholder="Masukkan nama Anda"
+                                required>
+
+                        </div>
+
+
+                        <!-- Email -->
+
+                        <div class="mb-4">
+
+                            <label
+                                class="block text-sm font-medium text-slate-300 mb-1.5">
+
+                                Email
+
+                            </label>
+
+                            <input
+                                type="email"
+                                id="cf-email"
+                                class="form-input"
+                                placeholder="contoh@email.com">
+
+                        </div>
+
+
+                        <!-- Subjek -->
+
+                        <div class="mb-4">
+
+                            <label
+                                class="block text-sm font-medium text-slate-300 mb-1.5">
+
+                                Subjek
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="cf-subject"
+                                class="form-input"
+                                placeholder="Subjek pesan"
+                                required>
+
+                        </div>
+
+
+                        <!-- Pesan -->
+
+                        <div class="mb-5">
+
+                            <label
+                                class="block text-sm font-medium text-slate-300 mb-1.5">
+
+                                Pesan
+
+                            </label>
+
+                            <textarea
+                                id="cf-message"
+                                class="form-input"
+                                placeholder="Tulis pesan Anda di sini..."
+                                required></textarea>
+
+                        </div>
+
+
+                        <!-- Submit -->
+
+                        <button
+                            type="submit"
+                            class="w-full inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full text-base font-semibold text-[#0b0f1a] bg-[#14f1d9] hover:bg-[#0dc2af] transition btn-lift shadow-lg shadow-[#14f1d9]/20">
+
+                            <i class="fa-regular fa-paper-plane"></i>
+
+                            Kirim Pesan
+
+                        </button>
+
+
+                        <p
+                            class="text-center text-xs text-slate-500 mt-3">
+
+                            <i class="fa-brands fa-whatsapp text-[#14f1d9]"></i>
+
+                            Pesan akan otomatis terkirim ke WhatsApp kami.
+
+                        </p>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER                                                     -->
+<!-- ============================================================ -->
+
+<footer class="border-t border-white/5 bg-[#080c14]">
+
+    <div class="max-w-7xl mx-auto px-5 py-12 md:py-16">
+
+        <div class="grid md:grid-cols-4 gap-8 text-center md:text-left">
+
+
+            <!-- ================================================= -->
+            <!-- BRAND                                              -->
+            <!-- ================================================= -->
+
+            <div class="md:col-span-1">
+
+                <a
+                    href="#home"
+                    class="inline-flex items-center justify-center md:justify-start gap-2 text-xl font-bold tracking-tight mb-3">
+
+                    <span class="logo-gradient text-2xl">
+                        Jog.DEV
+                    </span>
+
+                </a>
+
+                <p
+                    class="text-slate-500 text-sm leading-relaxed">
+
+                    Mitra digital terpercaya untuk website impian Anda.
+
+                </p>
+
+
+                <!-- Social Media -->
+
+                <div
+                    class="flex items-center justify-center md:justify-start gap-2 mt-5">
+
+                    <a
+                        href="https://www.instagram.com/mysteller_/"
+                        target="_blank"
+                        rel="noopener"
+                        class="social-icon text-slate-400 text-sm"
+                        aria-label="Instagram">
+
+                        <i class="fa-brands fa-instagram"></i>
+
+                    </a>
+
+
+                    <a
+                        href="https://wa.me/6285707680724"
+                        target="_blank"
+                        rel="noopener"
+                        class="social-icon text-slate-400 text-sm"
+                        aria-label="WhatsApp">
+
+                        <i class="fa-brands fa-whatsapp"></i>
+
+                    </a>
+
+
+                    <a
+                        href="https://www.tiktok.com/@nocturnal.ml.id"
+                        target="_blank"
+                        rel="noopener"
+                        class="social-icon text-slate-400 text-sm"
+                        aria-label="TikTok">
+
+                        <i class="fa-brands fa-tiktok"></i>
+
+                    </a>
+
+
+                    <a
+                        href="https://github.com/jogboy-web"
+                        target="_blank"
+                        rel="noopener"
+                        class="social-icon text-slate-400 text-sm"
+                        aria-label="GitHub">
+
+                        <i class="fa-brands fa-github"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- HALAMAN                                             -->
+            <!-- ================================================= -->
+
+            <div>
+
+                <h4
+                    class="text-white text-sm font-semibold uppercase tracking-wider mb-4">
+
+                    Halaman
+
+                </h4>
+
+
+                <ul
+                    class="space-y-2.5 text-sm text-slate-400">
+
+                    <li>
+                        <a
+                            href="#home"
+                            class="hover:text-[#14f1d9] transition">
+
+                            Beranda
+
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a
+                            href="#about"
+                            class="hover:text-[#14f1d9] transition">
+
+                            Tentang
+
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a
+                            href="#services"
+                            class="hover:text-[#14f1d9] transition">
+
+                            Layanan
+
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a
+                            href="#portfolio"
+                            class="hover:text-[#14f1d9] transition">
+
+                            Portofolio
+
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a
+                            href="#contact"
+                            class="hover:text-[#14f1d9] transition">
+
+                            Kontak
+
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- LAYANAN                                            -->
+            <!-- ================================================= -->
+
+            <div>
+
+                <h4
+                    class="text-white text-sm font-semibold uppercase tracking-wider mb-4">
+
+                    Layanan
+
+                </h4>
+
+
+                <ul
+                    class="space-y-2.5 text-sm text-slate-400">
+
+                    <li>
+                        <a
+                            href="#services"
+                            class="hover:text-[#14f1d9] transition">
+
+                            Web Development
+
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a
+                            href="#services"
+                            class="hover:text-[#14f1d9] transition">
+
+                            Desain UI/UX
+
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a
+                            href="#services"
+                            class="hover:text-[#14f1d9] transition">
+
+                            SEO & Performa
+
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a
+                            href="#services"
+                            class="hover:text-[#14f1d9] transition">
+
+                            Maintenance
+
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- KONTAK                                             -->
+            <!-- ================================================= -->
+
+            <div>
+
+                <h4
+                    class="text-white text-sm font-semibold uppercase tracking-wider mb-4">
+
+                    Kontak
+
+                </h4>
+
+
+                <ul
+                    class="space-y-2.5 text-sm text-slate-400">
+
+
+                    <li
+                        class="flex items-start justify-center md:justify-start gap-2">
+
+                        <i
+                            class="fa-regular fa-envelope mt-0.5 text-[#14f1d9]/70">
+                        </i>
+
+                        <span>
+                            dirot224@gmail.com
+                        </span>
+
+                    </li>
+
+
+                    <li
+                        class="flex items-start justify-center md:justify-start gap-2">
+
+                        <i
+                            class="fa-regular fa-building mt-0.5 text-[#14f1d9]/70">
+                        </i>
+
+                        <span>
+                            Kec. Wiradesa, Kab. Pekalongan, Jawa Tengah
+                        </span>
+
+                    </li>
+
+
+                    <li
+                        class="flex items-start justify-center md:justify-start gap-2">
+
+                        <i
+                            class="fa-regular fa-clock mt-0.5 text-[#14f1d9]/70">
+                        </i>
+
+                        <span>
+                            Sen–Sab, 09.00–18.00
+                        </span>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <!-- ===================================================== -->
+        <!-- DIVIDER                                               -->
+        <!-- ===================================================== -->
+
+        <hr class="border-white/5 my-8" />
+
+
+        <!-- ===================================================== -->
+        <!-- COPYRIGHT                                             -->
+        <!-- ===================================================== -->
+
+        <div
+            class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600">
+
+            <p>
+                &copy; 2025 Jog.DEV. All rights reserved.
+            </p>
+
+
+            <p
+                class="flex items-center gap-2">
+
+                <span>
+                    Dibuat dengan
+                </span>
+
+                <span class="text-[#14f1d9]">
+
+                    <i class="fa-solid fa-heart"></i>
+
+                </span>
+
+                <span>
+                    oleh Jog.DEV
+                </span>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- ============================================================ -->
+<!-- BACK TO TOP BUTTON                                           -->
+<!-- ============================================================ -->
+<button
+    id="back-to-top"
+    type="button"
+    aria-label="Kembali ke atas"
+    class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-[#14f1d9] text-[#0b0f1a] flex items-center justify-center text-lg shadow-lg shadow-[#14f1d9]/30 transition-all duration-300 opacity-0 pointer-events-none hover:bg-[#0dc2af] btn-lift">
+    <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+    <!-- Semua section landing page akan dimasukkan di sini -->
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+/* ============================================================ */
+/* CONTACT — SEND MESSAGE TO WHATSAPP                           */
+/* Diambil dari kontak.html repo                                */
+/* ============================================================ */
+
+window.sendToWhatsApp = function (e) {
+
+    e.preventDefault();
+
+    const name =
+        document.getElementById('cf-name')
+            .value
+            .trim();
+
+    const email =
+        document.getElementById('cf-email')
+            .value
+            .trim();
+
+    const subject =
+        document.getElementById('cf-subject')
+            .value
+            .trim();
+
+    const message =
+        document.getElementById('cf-message')
+            .value
+            .trim();
+
+
+    /* ======================================================== */
+    /* VALIDASI                                                  */
+    /* ======================================================== */
+
+    if (!name || !subject || !message) {
+
+        alert(
+            'Mohon lengkapi nama, subjek, dan pesan terlebih dahulu.'
+        );
+
+        return false;
+    }
+
+
+    /* ======================================================== */
+    /* SUSUN PESAN                                               */
+    /* ======================================================== */
+
+    let text =
+        'Halo Jog.DEV!\n\n';
+
+
+    text +=
+        'Nama: ' +
+        name +
+        '\n';
+
+
+    if (email) {
+
+        text +=
+            'Email: ' +
+            email +
+            '\n';
+
+    }
+
+
+    text +=
+        'Subjek: ' +
+        subject +
+        '\n';
+
+
+    text +=
+        'Pesan: ' +
+        message;
+
+
+    /* ======================================================== */
+    /* WHATSAPP URL                                              */
+    /* ======================================================== */
+
+    const url =
+        'https://wa.me/6285707680724?text=' +
+        encodeURIComponent(text);
+
+
+    /* ======================================================== */
+    /* BUKA WHATSAPP                                             */
+    /* ======================================================== */
+
+    window.open(
+        url,
+        '_blank'
+    );
+
+
+    return false;
+
+};
+</script>
+
+<script>
+(function () {
+    "use strict";
+
+    /* ============================================================
+       PORTFOLIO — FADE IN
+       ============================================================ */
+    const fadeEls = document.querySelectorAll(".fade-in");
+
+    if (fadeEls.length > 0) {
+        if ("IntersectionObserver" in window) {
+            const observer = new IntersectionObserver(
+                function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                        }
+                    });
+                },
+                {
+                    threshold: 0.15,
+                    rootMargin: "0px 0px -40px 0px"
+                }
+            );
+
+            fadeEls.forEach(function (el) {
+                observer.observe(el);
+            });
+        } else {
+            fadeEls.forEach(function (el) {
+                el.classList.add("visible");
+            });
+        }
+    }
+
+    /* ============================================================
+       PORTFOLIO — FILTER
+       ============================================================ */
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    const projects = document.querySelectorAll(".project-card[data-category]");
+    const emptyState = document.getElementById("empty-state");
+
+    filterBtns.forEach(function (button) {
+        button.addEventListener("click", function () {
+            /* Remove active dari semua tombol */
+            filterBtns.forEach(function (btn) {
+                btn.classList.remove("active");
+            });
+
+            /* Aktifkan tombol yang dipilih */
+            this.classList.add("active");
+
+            /* Ambil kategori */
+            const filter = this.getAttribute("data-filter");
+            let visibleCount = 0;
+
+            /* Filter project */
+            projects.forEach(function (project) {
+                const category = project.getAttribute("data-category");
+
+                if (filter === "all" || category === filter) {
+                    project.style.display = "";
+                    visibleCount++;
+                } else {
+                    project.style.display = "none";
+                }
+            });
+
+            /* ====================================================
+               EMPTY STATE
+               ==================================================== */
+            if (emptyState) {
+                if (visibleCount === 0) {
+                    emptyState.classList.remove("hidden");
+
+                    setTimeout(function () {
+                        emptyState.classList.add("visible");
+                    }, 10);
+                } else {
+                    emptyState.classList.add("hidden");
+                    emptyState.classList.remove("visible");
+                }
+            }
+
+            /* ====================================================
+               REFRESH AOS
+               ==================================================== */
+            if (typeof AOS !== "undefined") {
+                setTimeout(function () {
+                    AOS.refresh();
+                }, 100);
+            }
+        });
+    }); // <-- Sudah diperbaiki di sini
+
+    /* ============================================================
+       PORTFOLIO — BACK TO TOP
+       ============================================================ */
+    const backToTop = document.getElementById("back-to-top");
+
+    if (backToTop) {
+        const updateBackToTop = function () {
+            const show = window.scrollY > 500;
+
+            backToTop.classList.toggle("opacity-0", !show);
+            backToTop.classList.toggle("pointer-events-none", !show);
+            backToTop.classList.toggle("opacity-100", show);
+            backToTop.classList.toggle("pointer-events-auto", show);
+        };
+
+        window.addEventListener("scroll", updateBackToTop, { passive: true });
+
+        updateBackToTop();
+
+        backToTop.addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    }
+})();
+</script>
+
+<script>
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 80
+    });
+</script>
+
+<script>
+const toggleBtn = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+let menuOpen = false;
+
+if (toggleBtn && mobileMenu) {
+    toggleBtn.addEventListener('click', () => {
+        menuOpen = !menuOpen;
+        mobileMenu.classList.toggle('open', menuOpen);
+        toggleBtn.setAttribute(
+            'aria-expanded',
+            menuOpen ? 'true' : 'false'
+        );
+        document.body.style.overflow = menuOpen ? 'hidden' : '';
+
+        toggleBtn.innerHTML = menuOpen
+            ? '<i class="fa-solid fa-xmark"></i>'
+            : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuOpen = false;
+            mobileMenu.classList.remove('open');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+            toggleBtn.innerHTML =
+                '<i class="fa-solid fa-bars"></i>';
+        });
+    });
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+
+        if (targetId === '#') return;
+
+        const target = document.querySelector(targetId);
+
+        if (target) {
+            e.preventDefault();
+
+            const headerOffset = 80;
+
+            const top =
+                target.getBoundingClientRect().top +
+                window.pageYOffset -
+                headerOffset;
+
+            window.scrollTo({
+                top: top,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// ============================================================
+// NAVBAR — ACTIVE LINK ON SCROLL (SUDAH DIPERBAIKI)
+// ============================================================
+
+const navIds = ['home', 'about', 'services', 'portfolio', 'contact'];
+const navSections = navIds
+    .map(id => document.getElementById(id))
+    .filter(Boolean);
+
+const desktopNavLinks = document.querySelectorAll('header nav a.nav-link');
+const mobileNavLinks = document.querySelectorAll('#mobile-menu a[href^="#"]');
+
+function updateActiveNav() {
+    // Posisi scroll + offset tinggi navbar
+    const scrollPos = window.scrollY + 180;
+    let currentSectionId = 'home';
+
+    // Selama belum melewati section berikutnya, tetap ikut section sebelumnya
+    // (Tech Stack otomatis ikut #about, Paket & FAQ otomatis ikut #services)
+    navSections.forEach(section => {
+        if (scrollPos >= section.offsetTop) {
+            currentSectionId = section.id;
+        }
+    });
+
+    // 1. Update Menu Desktop
+    desktopNavLinks.forEach(link => {
+        const isMatch = link.getAttribute('href') === '#' + currentSectionId;
+        link.classList.toggle('active', isMatch);
+        link.classList.toggle('text-white', isMatch);
+        link.classList.toggle('text-slate-400', !isMatch);
+    });
+
+    // 2. Update Menu Mobile
+    mobileNavLinks.forEach(link => {
+        const isMatch = link.getAttribute('href') === '#' + currentSectionId;
+        link.classList.toggle('text-white', isMatch);
+        link.classList.toggle('font-medium', isMatch);
+        link.classList.toggle('border-l-2', isMatch);
+        link.classList.toggle('border-[#14f1d9]', isMatch);
+        link.classList.toggle('pl-3', isMatch);
+        link.classList.toggle('text-slate-400', !isMatch);
+        link.classList.toggle('pl-4', !isMatch);
+    });
+}
+
+window.addEventListener('scroll', updateActiveNav, { passive: true });
+updateActiveNav();
+
+// ============================================================
+// TECH STACK — SKILL BAR
+// ============================================================
+
+const skillFills = Array.prototype.slice.call(
+    document.querySelectorAll('.skill-bar-fill')
+);
+
+const firstBar = document.querySelector('.skill-bar-fill');
+
+const barsWrap = firstBar
+    ? firstBar.closest('.space-y-6')
+    : null;
+
+const skillContainer = barsWrap
+    ? barsWrap.parentElement
+    : null;
+
+const fillAll = function(width) {
+    skillFills.forEach(function(fill) {
+        fill.style.width = width;
+    });
+};
+
+if (skillFills.length > 0) {
+
+    if ('IntersectionObserver' in window && skillContainer) {
+
+        fillAll('0%');
+
+        const skillObserver = new IntersectionObserver(
+            function(entries) {
+
+                entries.forEach(function(entry) {
+
+                    if (entry.isIntersecting) {
+
+                        skillFills.forEach(function(fill) {
+                            fill.style.width =
+                                fill.getAttribute('data-width');
+                        });
+
+                    } else {
+
+                        fillAll('0%');
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.25
+            }
+        );
+
+        skillObserver.observe(skillContainer);
+
+    } else {
+
+        skillFills.forEach(function(fill) {
+            fill.style.width =
+                fill.getAttribute('data-width');
+        });
+
+    }
+}
+
+</script>
+
+<script>
+/* ============================================================
+   SERVICES — PRICING / ORDER MODAL
+   Diambil dari services.html
+   ============================================================ */
+
+(function () {
+    "use strict";
+
+
+    /* ============================================================
+       MODAL PEMBELIAN PAKET
+       ============================================================ */
+
+    window.openOrder = function (btn) {
+
+        const pkg = btn.getAttribute("data-package");
+        const desc = btn.getAttribute("data-desc");
+        const price = btn.getAttribute("data-price");
+
+        document.getElementById("om-package").textContent =
+            "Paket " + pkg;
+
+        document.getElementById("om-package-name").textContent =
+            "Paket " + pkg;
+
+        document.getElementById("om-package-desc").textContent =
+            desc;
+
+        document.getElementById("om-price").textContent =
+            price;
+
+        document.getElementById("order-overlay")
+            .classList.add("open");
+
+        document.body.style.overflow = "hidden";
+    };
+
+
+    /* ============================================================
+       TUTUP MODAL
+       ============================================================ */
+
+    window.closeOrder = function () {
+
+        document.getElementById("order-overlay")
+            .classList.remove("open");
+
+        document.body.style.overflow = "";
+
+        // Reset kembali ke tampilan form
+        document.getElementById("qris-panel")
+            .classList.remove("active");
+
+        document.getElementById("order-head")
+            .style.display = "";
+
+        document.getElementById("order-form")
+            .style.display = "";
+    };
+
+
+    /* ============================================================
+       SUBMIT ORDER
+       ============================================================ */
+
+    window.submitOrder = function (e) {
+
+        e.preventDefault();
+
+        const pkg =
+            document.getElementById("om-package-name")
+                .textContent;
+
+        const price =
+            document.getElementById("om-price")
+                .textContent;
+
+        const name =
+            (document.getElementById("of-name").value || "")
+                .trim();
+
+        const phone =
+            (document.getElementById("of-phone").value || "")
+                .trim();
+
+        const email =
+            (document.getElementById("of-email").value || "")
+                .trim();
+
+        const notes =
+            (document.getElementById("of-notes").value || "")
+                .trim();
+
+        const payment =
+            document.querySelector(
+                'input[name="payment"]:checked'
+            ).value;
+
+
+        /* Validasi */
+        if (!name || !phone) {
+
+            alert(
+                "Mohon lengkapi nama dan nomor WhatsApp Anda terlebih dahulu."
+            );
+
+            return false;
+        }
+
+
+        /* ========================================================
+           SUSUN PESAN WHATSAPP
+           ======================================================== */
+
+        let waParts = [
+
+            "Halo Jog.DEV! Saya ingin memesan paket webiste.",
+
+            "",
+
+            "Nama: " + name,
+
+            "No. WhatsApp: " + phone
+
+        ];
+
+
+        if (email) {
+
+            waParts.push(
+                "Email: " + email
+            );
+
+        }
+
+
+        waParts.push(
+            "Paket: " + pkg + " (" + price + ")"
+        );
+
+
+        waParts.push(
+            "Metode Pembayaran: " + payment
+        );
+
+
+        if (notes) {
+
+            waParts.push(
+                "Catatan: " + notes
+            );
+
+        }
+
+
+        /* ========================================================
+           URL WHATSAPP
+           ======================================================== */
+
+        const waUrl =
+            "https://wa.me/6285707680724?text=" +
+            encodeURIComponent(
+                waParts.join("\n")
+            );
+
+
+        /* Buka WhatsApp */
+        window.open(
+            waUrl,
+            "_blank"
+        );
+
+
+        /* Tutup modal */
+        closeOrder();
+
+
+        /* Reset form */
+        e.target.reset();
+
+
+        return false;
+    };
+
+
+    /* ============================================================
+       QRIS
+       
+       Saat ini di source repo QRIS masih disabled.
+       Fungsi ini tetap dipertahankan agar sesuai dengan
+       JavaScript asli services.html.
+       ============================================================ */
+
+    window.showQRIS = function (
+        pkg,
+        price,
+        name,
+        phone,
+        notes
+    ) {
+
+        document.getElementById("order-form")
+            .style.display = "none";
+
+        document.getElementById("order-head")
+            .style.display = "none";
+
+
+        document.getElementById("qris-amount")
+            .textContent = price;
+
+
+        const notesEl =
+            document.getElementById("qris-notes");
+
+
+        notesEl.textContent =
+            pkg +
+            (phone
+                ? " · " + name + " · " + phone
+                : ""
+            );
+
+
+        /* ========================================================
+           QR PAYLOAD
+           ======================================================== */
+
+        const qrPayload =
+            "QRIS PAYMENT\n" +
+            pkg + "\n" +
+            price + "\n" +
+            name + "\n" +
+            phone +
+            (notes
+                ? "\n" + notes
+                : ""
+            );
+
+
+        /* ========================================================
+           GENERATE QR
+           ======================================================== */
+
+        if (typeof QRious !== "undefined") {
+
+            new QRious({
+
+                element:
+                    document.getElementById(
+                        "qris-canvas"
+                    ),
+
+                value: qrPayload,
+
+                size: 240,
+
+                level: "M",
+
+                foreground: "#0b0f1a",
+
+                background: "#ffffff",
+
+                padding: 12
+
+            });
+
+        }
+
+
+        /* ========================================================
+           LINK WHATSAPP KONFIRMASI
+           ======================================================== */
+
+        const waText =
+            "Halo Jog.DEV! Saya ingin konfirmasi pembayaran QRIS.\n" +
+            "Pesanan: " + pkg + "\n" +
+            "Total: " + price + "\n" +
+            "Nama: " + name + "\n" +
+            "No WA: " + phone + "\n" +
+            "Metode: QRIS";
+
+
+        document.getElementById(
+            "qris-wa-link"
+        ).href =
+            "https://wa.me/6285707680724?text=" +
+            encodeURIComponent(waText);
+
+
+        /* Source repo menyembunyikan tombol WA */
+        const waLink =
+            document.getElementById(
+                "qris-wa-link"
+            );
+
+
+        if (waLink) {
+
+            waLink.style.display = "none";
+
+        }
+
+
+        /* Tampilkan QRIS */
+
+        document.getElementById(
+            "qris-panel"
+        ).classList.add("active");
+
+
+        document.getElementById(
+            "order-overlay"
+        ).classList.add("open");
+
+
+        document.body.style.overflow = "hidden";
+
+
+        /* Notifikasi */
+
+        alert(
+            "Terima kasih " +
+            name +
+            "!\n\n" +
+
+            "Kode QRIS untuk " +
+            pkg +
+            " (" +
+            price +
+            ") telah ditampilkan.\n\n" +
+
+            "Silakan scan QRIS dan selesaikan pembayaran.\n\n" +
+
+            "Setelah pembayaran berhasil, pesanan Anda akan kami proses\n" +
+            "dan tim kami akan menghubungi Anda untuk konfirmasi."
+        );
+    };
+
+
+    /* ============================================================
+       KEMBALI KE FORM
+       ============================================================ */
+
+    window.backToForm = function () {
+
+        document.getElementById(
+            "qris-panel"
+        ).classList.remove("active");
+
+
+        document.getElementById(
+            "order-head"
+        ).style.display = "";
+
+
+        document.getElementById(
+            "order-form"
+        ).style.display = "";
+    };
+
+
+    /* ============================================================
+       TUTUP MODAL DENGAN ESC
+       ============================================================ */
+
+    document.addEventListener(
+        "keydown",
+        function (e) {
+
+            if (e.key === "Escape") {
+
+                closeOrder();
+
+            }
+
+        }
+    );
+
+})();
+</script>
+</body>
+</html>
